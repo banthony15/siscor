@@ -1,0 +1,220 @@
+<ol class="breadcrumb">
+  <li>
+    <i class="fa fa-home">
+      <?php  if (isset($_view_params['menu'])):?>
+      <?php  for ($i= 0; $i < count($_view_params['menu']); $i++):?>
+      <a href="<?php  echo $_view_params['menu'][$i]['link'];?>">
+        <?php  echo $_view_params['menu'][$i]['title']; ?></a></i>
+
+    <?php  endfor;?>
+    <?php  endif;?>
+
+  </li>
+
+  <li class="active">
+    <i class="fa fa-gear"></i> Telemática
+  </li>
+
+  <li class="active">
+    <i class="fa fa-desktop"></i> Área de servicio
+  </li>
+
+  <li class="active">
+    <i class="fa fa-file-text"></i> Actualizar Requerimiento
+  </li>
+</ol>
+
+<body>
+  <header class="header">
+    <div class="row ">
+      <div class="col-md-10 col-sm-offset-1">
+        <form id="micro" class="form-horizontal" action="<?php  echo BASE_URL;?>telematica/updatesoporte" method="post">
+
+          <div class="panel-body">
+            <input type="hidden" name="id" value="<?php echo $this->_micro[0]['id'] ?>">
+            <div class="form-group">
+
+
+
+              <div class="panel panel-primary">
+                <div class="panel-heading">
+                  <h3 class="panel-title fa fa">Datos del Despacho</h3>
+                </div>
+                <div class="panel-body">
+
+                  <div class="form-group">
+                    <label class="control-label col-sm-1 col-md-offset-0">Dependencia</label>
+
+                  </div>
+
+                  <div class="form-group">
+
+                    <div class="col-sm-4">
+                      <select class="form-control" id="areaa">
+                        <option value="<?php echo $this->_micro[0]['pdi'] ?>">
+                          <?php echo $this->_micro[0]['padre_padre'] ?>
+                        </option>
+                      </select>
+                    </div>
+
+                    <div class="col-sm-4">
+                      <select class="form-control" name="areab" id="areab">
+                        <option value="<?php echo $this->_micro[0]['abid'] ?>">
+                          <?php echo $this->_micro[0]['padre_despacho'] ?>
+                        </option>
+                      </select>
+                    </div>
+
+                    <div class="col-sm-4">
+                      <select class="form-control" name="areac" id="areac">
+                        <option value="<?php echo $this->_micro[0]['ar'] ?>">
+                          <?php echo $this->_micro[0]['areac']?>
+                        </option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <div>
+                      <label class="col-sm-2 col-md-offset-0">Codigo de area</label>
+                    </div>
+
+                    <div>
+                      <label class="col-sm-2 col-md-offset-1">Numero de contacto</label>
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+
+                    <div class="col-sm-3 col-md-offset-0">
+                      <select class="form-control" name="cod_area" id="cod_area">
+                        <option value="<?php echo $this->_micro[0]['cai'] ?>">
+                          <?php echo $this->_micro[0]['codigo_area'] ?>
+                        </option>
+                      </select>
+                    </div>
+                    <div class="col-sm-3 col-md-offset-0">
+                      <input type="text" class="form-control" name="numero_tel" id="numero_tel" placeholder="Ingrese un numero de telefono"
+                        title="numero de telefono" value="<?php echo $this->_micro[0]['numero_tel'] ?>">
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+
+              <div class="panel panel-primary">
+                <div class="panel-heading">
+                  <h3 class="panel-title">Datos Del Requerimiento</h3>
+                </div>
+
+
+                <div class="panel-body">
+
+                  <div class="form-group">
+                    <div>
+                      <label class="col-sm-3 col-md-offset-0">levantamiento del Req.</label>
+                    </div>
+                    <div>
+                      <label class="col-sm-2 col-md-offset-0">Fecha de Culminacion</label>
+                    </div>
+                    <div>
+                      <label class="col-sm-2 col-md-offset-1">Tipo de Requerimiento</label>
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+
+                    <div class="col-sm-3 col-md-offset-0">
+                      <input type="text" class="form-control" disabled="" name="fecha_inicio" placeholder="fecha de inicio"
+                        id="fecha_inicio" title="fecha de inicio" value="<?php echo $this->_micro[0]['fecha_inicio'] ?>">
+                    </div>
+
+                    <div class="col-sm-3 col-md-offset-0">
+                      <input type="datetime-local" class="form-control" name="fecha_culminacion" placeholder="N/A"
+                        title="fecha_culminacion" value="<?php echo $this->_micro[0]['fecha_culminacion'] ?>">
+                    </div>
+
+                    <div class="col-sm-6 col-md-offset-0">
+                      <select class="form-control" name="tipo_de_rt" id="tipo_de_rt">
+                        <option value="<?php echo $this->_micro[0]['tspr'] ?>">
+                          <?php echo $this->_micro[0]['tipo_de_requerimiento'] ?>
+                        </option>
+                      </select>
+                    </div>
+
+                  </div>
+
+                  <div class="form-group">
+                    <div>
+                      <label class="col-sm-3 col-md-offset-0">Status</label>
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <div class="col-sm-3 col-md-offset-0">
+                      <select class="form-control" name="status_del_caso" id="status_del_caso">
+                        <option value="<?php echo $this->_micro[0]['sei'] ?>">
+                          <?php echo $this->_micro[0]['status_del_caso'] ?>
+                        </option>
+                      </select>
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <div>
+                      <label class="col-sm-2 col-md-offset-0">Descripción</label>
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+
+                    <div class="col-sm-12 col-md-offset-0">
+                      <textarea type="text" class="form-control" name="descripcion" placeholder="Max 500 Caracteres."
+                        maxlength="500" id="descripcion" class=estilotextarea1 cols="60" rows="2"><?php echo $this->_micro[0]['descripcion'] ?></textarea>
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <div>
+                      <label class="col-sm-2 col-md-offset-0">Solucion</label>
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+
+                    <div class="col-sm-12 col-md-offset-0">
+                      <textarea type="text" class="form-control" name="solucion" placeholder="Max 500 Caracteres."
+                        maxlength="500" id="descripcion" class=estilotextarea1 cols="60" rows="2"><?php echo $this->_micro[0]['solucion'] ?></textarea>
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <div>
+                      <label class="col-sm-2 col-md-offset-0">observacion</label>
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+
+                    <div class="col-sm-12 col-md-offset-0">
+                      <textarea type="text" class="form-control" name="observacion" placeholder="Max 500 Caracteres."
+                        maxlength="500" id="observacion" class=estilotextarea1 cols="60" rows="2"><?php echo $this->_micro[0]['observacion'] ?></textarea>
+                    </div>
+                  </div>
+
+
+
+
+                  <div class="col-sm-offset-6">
+                    <input type="submit" value="Registrar" class="btn btn-primary" onclick="return confirm('¿Esta seguro que desea registrar este requerimiento?');">
+                  </div>
+
+                </div>
+              </div>
+
+        </form>
+      </div>
+    </div>
+  </header>
+</body>
+
+</html>

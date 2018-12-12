@@ -1,0 +1,380 @@
+<ol class="breadcrumb">
+  <li>
+    <i class="fa fa-home">
+      <?php  if (isset($_view_params['menu'])):?>
+      <?php  for ($i= 0; $i < count($_view_params['menu']); $i++):?>
+      <a href="<?php  echo $_view_params['menu'][$i]['link'];?>">
+        <?php  echo $_view_params['menu'][$i]['title']; ?></a></i>
+
+    <?php  endfor;?>
+    <?php  endif;?>
+
+  </li>
+
+  <li class="active">
+    <i class="fa fa-gear"></i> Telemática
+  </li>
+
+  <li class="active">
+    <i class="fa fa-linux"></i> Área de soporte de equipos tecnológicos
+  </li>
+
+  <li class="active">
+    <i class="fa fa-file-text"></i> Actualizar Requerimiento
+  </li>
+</ol>
+
+<body>
+  <header class="header">
+    <div class="row ">
+      <div class="col-md-10 col-sm-offset-1">
+        <form id="micro" class="form-horizontal" action="<?php  echo BASE_URL;?>telematica/urmicro" method="post">
+
+          <div class="panel-body">
+            <input type="hidden" name="id" value="<?php echo $this->_micro[0]['id'] ?>">
+            <div class="form-group">
+
+              <div class="panel panel-primary">
+                <div class="panel-heading">
+                  <h3 class="panel-title fa fa">Datos del Despacho</h3>
+                </div>
+                <div class="panel-body">
+
+                  <div class="form-group">
+                    <label class="control-label col-sm-1 col-md-offset-0">Dependencia</label>
+
+                  </div>
+
+                  <div class="form-group">
+
+                    <div class="col-sm-4">
+                      <select class="form-control" id="areaa">
+                        <option value="<?php echo $this->_micro[0]['pdi'] ?>">
+                          <?php echo $this->_micro[0]['padre_padre'] ?>
+                        </option>
+                      </select>
+                    </div>
+
+                    <div class="col-sm-4">
+                      <select class="form-control" name="areab" id="areab">
+                        <option value="<?php echo $this->_micro[0]['abid'] ?>">
+                          <?php echo $this->_micro[0]['padre_despacho'] ?>
+                        </option>
+                      </select>
+                    </div>
+
+                    <div class="col-sm-4">
+                      <select class="form-control" name="areac" id="areac">
+                        <option value="<?php echo $this->_micro[0]['ar'] ?>">
+                          <?php echo $this->_micro[0]['areac']?>
+                        </option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <div>
+                      <label class="col-sm-2 col-md-offset-0">Codigo de area</label>
+                    </div>
+
+                    <div>
+                      <label class="col-sm-2 col-md-offset-1">Numero de contacto</label>
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+
+                    <div class="col-sm-3 col-md-offset-0">
+                      <select class="form-control" name="cod_area" id="cod_area">
+                        <option value="<?php echo $this->_micro[0]['cai'] ?>">
+                          <?php echo $this->_micro[0]['cod_area'] ?>
+                        </option>
+                      </select>
+                    </div>
+                    <div class="col-sm-3 col-md-offset-0">
+                      <input type="text" class="form-control" required="" name="numero_micro" placeholder="Ingrese un numero de telefono"
+                        title="numero de telefono" value="<?php echo $this->_micro[0]['numero_micro'] ?>">
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+
+
+
+              <div class="panel panel-primary">
+                <div class="panel-heading">
+                  <h3 class="panel-title">Datos Del Requerimiento</h3>
+                </div>
+
+                <div class="panel-body">
+
+                  <div class="form-group">
+
+                    <label class="col-sm-3 col-md-offset-0">levantamiento del Req</label>
+                    <label class="col-sm-2 col-md-offset-0">Fecha de Culminacion</label>
+                    <label class="col-sm-3 col-md-offset-1">Tipo de Equipos</label>
+                    <label class="col-sm-2 col-md-offset-0">Marca del Equipo</label>
+
+
+                  </div>
+
+                  <div class="form-group">
+
+                    <div class="col-sm-3 col-md-offset-0">
+                      <input type="text" class="form-control" disabled="" name="fecha_micro" placeholder="fecha de inicio"
+                        id="fecha_micro" title="fecha de inicio" value="<?php echo $this->_micro[0]['fecha_micro'] ?>">
+                    </div>
+
+                    <div class="col-sm-3 col-md-offset-0">
+                      <input type="datetime-local" class="form-control" name="fecha_entrega" id="fecha_entrega"
+                        placeholder="N/A" title="fecha_entrega" value="<?php echo $this->_micro[0]['fecha_entrega'] ?>">
+                    </div>
+
+                    <div class="col-sm-3 col-md-offset-0">
+                      <select class="form-control" title="¡CONFIRME SU OPCIÓN!" name="tipo_equipo" id="tipo_equipo"
+                        onChange="selectequipo(this)">
+                        <option value="<?php echo $this->_micro[0]['tpi'] ?>">
+                          <?php echo $this->_micro[0]['tipo_de_equipo'] ?>
+                        </option>
+                      </select>
+                    </div>
+
+                    <div class="col-sm-3 col-md-offset-0">
+                      <input type="text" class="form-control" name="marca_del_equipo" id="marca_del_equipo" placeholder="Marca del equipo"
+                        title="marca del equipos" value="<?php echo $this->_micro[0]['marca_del_equipo'] ?>">
+                    </div>
+
+                  </div>
+
+                  <div class="form-group">
+
+                    <label class="col-sm-2 col-md-offset-0">Modelo del Equipo</label>
+                    <label class="col-sm-2 col-md-offset-1">Serial del equipo</label>
+                    <label class="col-sm-3 col-md-offset-1">Pieza Dañada</label>
+                    <label class="col-sm-2 col-md-offset-0">Rayado</label>
+
+                  </div>
+
+                  <div class="form-group">
+
+                    <div class="col-sm-3 col-md-offset-0">
+                      <input type="text" class="form-control" name="modelo_del_equipo" placeholder="Modelo del Equipo"
+                        id="modelo_del_equipo" title="Modelo del Equipo" value="<?php echo $this->_micro[0]['modelo_del_equipo'] ?>">
+                    </div>
+
+                    <div class="col-sm-3 col-md-offset-0">
+                      <input type="text" class="form-control" name="serial_del_equipo" id="serial_del_equipo"
+                        placeholder="serial del equipo" title="serial_del_equipo" value="<?php echo $this->_micro[0]['serial_del_equipo'] ?>">
+                    </div>
+
+                    <div class="col-sm-3 col-md-offset-0">
+                      <select class="form-control" title="¡Si su respuesta es afirmativa, por favor detallar en la descripción, la pieza que se encuentra dañada!"
+                        name="pieza_danada" id="pieza_danada">
+                        <option value="<?php echo $this->_micro[0]['pdi'] ?>">
+                          <?php echo $this->_micro[0]['pieza_d'] ?>
+                        </option>
+                      </select>
+                    </div>
+
+                    <div class="col-sm-3 col-md-offset-0">
+                      <select class="form-control" title="¡Si su respuesta es afirmativa, por favor detallar en la descripción, la pieza que se encuentra Rayada!"
+                        name="rayado" id="rayado">
+                        <option value="<?php echo $this->_micro[0]['ri'] ?>">
+                          <?php echo $this->_micro[0]['rayado'] ?>
+                        </option>
+                      </select>
+                    </div>
+
+
+                  </div>
+
+
+                  <div class="form-group">
+                    <label class="col-sm-2 col-md-offset-0">Pieza Suelta</label>
+                    <!--             <div id="mpp" style="display:none;"> -->
+                    <label class="col-sm-2 col-md-offset-1">Marca del Procesador</label>
+                    <label class="col-sm-3 col-md-offset-1">Tipo de RAM</label>
+                    <label class="col-sm-2 col-md-offset-0">Capacidad de RAM</label>
+                    <!--             </div> -->
+                  </div>
+
+                  <div class="form-group">
+                    <div class="col-sm-3 col-md-offset-0">
+                      <select class="form-control" title="¡Si su respuesta es afirmativa, por favor detallar en la descripción, la pieza que se encuentra suelta!"
+                        name="pieza_suelta" id="pieza_suelta">
+                        <option value="<?php echo $this->_micro[0]['psi'] ?>">
+                          <?php echo $this->_micro[0]['pieza_s'] ?>
+                        </option>
+                      </select>
+                    </div>
+                    <!-- <div id="mr1" style="display:none;"> -->
+                    <div class="col-sm-3 col-md-offset-0">
+                      <select class="form-control" title="¡POR FAVOR describir el modelo del procesador en la descripcion!"
+                        name="marca_procesador" id="marca_procesador">
+                        <option>
+                          <?php echo $this->_micro[0]['marca_p'] ?>
+                        </option>
+                      </select>
+                    </div>
+
+                    <div class="col-sm-3 col-md-offset-0">
+                      <select class="form-control" name="tipo_de_ram" id="tipo_de_ram">
+                        <option>
+                          <?php echo $this->_micro[0]['tipo_de_ram'] ?>
+                        </option>
+                      </select>
+                    </div>
+                    <div class="col-sm-3 col-md-offset-0">
+                      <select class="form-control" name="capacidad_ram" id="capacidad_ram">
+                        <option>
+                          <?php echo $this->_micro[0]['capacidad_r'] ?>
+                        </option>
+                      </select>
+                    </div>
+
+                    <!-- </div> -->
+                  </div>
+
+                  <div class="form-group">
+                    <!--             <div id="dd" style="display:none;"> -->
+                    <label class="col-sm-2 col-md-offset-0">Cantida de memorias ram</label>
+                    <label class="col-sm-2 col-md-offset-1">Tipo de Disco Duro</label>
+                    <label class="col-sm-3 col-md-offset-1">Capacidad de almacenamiento</label>
+                    <label class="col-sm-2 col-md-offset-0">Cantida de Discos Duro</label>
+                    <!--  </div> -->
+                  </div>
+
+                  <div class="form-group">
+
+                    <!-- <div id="cp1" style="display:none;"> -->
+                    <div class="col-sm-3 col-md-offset-0">
+                      <input type="number" class="form-control" required="" value="<?php echo $this->_micro[0]['cantidad_memoria_ram'] ?>"
+                        name="cantidad_memoria_ram" placeholder="cantidad de memoria ram" id="cantidad_memoria_ram"
+                        title="Especifique la cantidad de memoria ram que posee el equipo">
+                    </div>
+                    <div class="col-sm-3 col-md-offset-0">
+                      <select class="form-control" name="tipo_disco_duro" id="tipo_disco_duro">
+                        <option value="">
+                          <?php echo $this->_micro[0]['tipo_dd'] ?>
+                        </option>
+                      </select>
+                    </div>
+                    <div class="col-sm-3 col-md-offset-0">
+                      <select class="form-control" name="capacidad_disco_duro" id="capacidad_disco_duro">
+                        <option value="">
+                          <?php echo $this->_micro[0]['capacidad_dd'] ?>
+                        </option>
+                      </select>
+                    </div>
+                    <div class="col-sm-3 col-md-offset-0">
+                      <input type="number" class="form-control" required="" value="<?php echo $this->_micro[0]['cantidad_disco_duro'] ?>"
+                        name="cantidad_disco_duro" placeholder="cantida de disco duro" id="cantidad_disco_duro" title="Especifique la cantidad de discos duro que posee el equipo">
+                    </div>
+                    <!--  </div>  -->
+
+                  </div>
+
+                  <!-- <div id="cp2" style="display:none;"> -->
+                  <div class="form-group">
+                    <label class="col-sm-2 col-md-offset-1">Fancooler</label>
+                    <label class="col-sm-3 col-md-offset-1">Unidad de DVD/CD-ROM</label>
+                    <label class="col-sm-3 col-md-offset-0">Tarjeta de Red</label>
+                    <label class="col-sm-2 col-md-offset-0">Tarjeta de Video</label>
+
+
+                  </div>
+
+                  <div class="form-group">
+
+                    <div class="col-sm-3 col-md-offset-0">
+                      <input type="number" value="<?php echo $this->_micro[0]['fan_cooler'] ?>" class="form-control"
+                        required="" name="fan_cooler" id="fan_cooler" title="Especifique la cantidad de fancooler internos del equipo">
+                    </div>
+                    <div class="col-sm-3 col-md-offset-0">
+                      <input type="number" class="form-control" value="<?php echo $this->_micro[0]['unidad_dvd_cd'] ?>"
+                        required="" name="unidad_dvd_cd" placeholder="cantidad de unidad de dvd/dc instaladas" id="unidad_dvd_cd"
+                        title="Especifique la cantidad de unidad de DVD/CD instaladas">
+                    </div>
+                    <div class="col-sm-3 col-md-offset-0">
+                      <input type="number" class="form-control" required="" value="<?php echo $this->_micro[0]['tarjeta_red'] ?>"
+                        name="tarjeta_red" placeholder="cantidad de tarjeta de Red interna" id="tarjeta_red" title="tarjeta de red">
+                    </div>
+                    <div class="col-sm-3 col-md-offset-0">
+                      <input type="number" class="form-control" required="" value="<?php echo $this->_micro[0]['tarjeta_video'] ?>"
+                        name="tarjeta_video" placeholder="cantidad de tarjeta de video interna" id="tarjeta_video"
+                        title="tarjeta de video">
+                    </div>
+
+
+                  </div>
+                  <!--  </div> -->
+
+                  <!-- <div id="mp" style="display:none;">     -->
+                  <div class="form-group">
+                    <label class="col-sm-2 col-md-offset-0">Tarjeta de Sonido</label>
+
+                    <label class="col-sm-2 col-md-offset-1">Status</label>
+                  </div>
+                  <div class="form-group">
+                    <div class="col-sm-3 col-md-offset-0">
+                      <input type="number" class="form-control" value="<?php echo $this->_micro[0]['tarjeta_sonido'] ?>"
+                        required="" name="tarjeta_sonido" placeholder="cantidad de tarjeta de sonido interna" id="tarjeta_sonido"
+                        title="tarjeta de sonido">
+                    </div>
+                    <div class="col-sm-3 col-md-offset-0">
+                      <select class="form-control" name="status_equipo" id="status_equipo">
+                        <option value="<?php echo $this->_micro[0]['sepi'] ?>">
+                          <?php echo $this->_micro[0]['status_equipo'] ?>
+                        </option>
+                      </select>
+                    </div>
+                  </div>
+                  <!--  </div>    -->
+
+
+
+                  <div class="form-group">
+                    <label class="col-sm-3 col-md-offset-0">Descripción</label>
+                  </div>
+
+                  <div class="form-group">
+                    <div class="col-sm-12 col-md-offset-0">
+                      <div class="col-sm-12">
+                        <textarea type="text" class="form-control" name="descripcion" placeholder="Max 500 Caracteres."
+                          maxlength="500" id="descripcion" class=estilotextarea1 cols="60" rows="2"><?php echo $this->_micro[0]['descripcion'] ?></textarea>
+                      </div>
+                    </div>
+
+
+                  </div>
+
+                  <div class="form-group">
+                    <label class="col-sm-3 col-md-offset-0">Solución</label>
+                  </div>
+
+                  <div class="form-group">
+                    <div class="col-sm-12 col-md-offset-0">
+                      <div class="col-sm-12">
+                        <textarea type="text" class="form-control" name="solucion" placeholder="Max 500 Caracteres."
+                          maxlength="500" id="descripcion" class=estilotextarea1 cols="60" rows="2"><?php echo $this->_micro[0]['solucion'] ?></textarea>
+                      </div>
+                    </div>
+
+
+                  </div>
+
+
+                  <div class="col-sm-offset-6">
+                    <input type="submit" value="Registrar" class="btn btn-primary" onclick="return confirm('¿Esta seguro que desea registrar este requerimiento?');">
+                  </div>
+
+                </div>
+
+
+        </form>
+      </div>
+    </div>
+  </header>
+</body>
+
+</html>

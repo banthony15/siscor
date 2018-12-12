@@ -1,0 +1,82 @@
+<ol class="breadcrumb">
+    <li>
+        <i class="fa fa-home"></i>
+
+        <?php  if (isset($_view_params['menu'])):?>
+        <?php  for ($i= 0; $i < count($_view_params['menu']); $i++):?>         
+        <a href="<?php  echo $_view_params['menu'][$i]['link'];?>"><?php  echo $_view_params['menu'][$i]['title']; ?></a>
+
+        <?php  endfor;?>
+        <?php  endif;?> 
+
+    </li>
+    <li class="active">
+        <i class="fa fa-keyboard-o"></i> Sistemas
+    </li>
+
+    <li class="active">
+        <i class="fa fa-file-pdf-o"></i> Reportes
+    </li>  
+
+    <li class="active">
+        <i class="fa fa-calendar"></i> Cantidad de reportes por periodo de año
+    </li>  
+
+    <li class="active">
+        <i class="fa fa-home"></i> Cantidad de reportes por despacho
+    </li>  
+
+</ol>
+
+     <div id="page-wrapper">
+        <div class="container">
+            <div class="col-md-12 col-md-offset-0" >
+                <div class= "panel panel-primary">
+                    <div class="panel-body">
+                        <div class="dataTable_wrapper">
+                            <form action="<?php  echo BASE_URL;?>requerimiento/mesdesp" method="post">
+                                <table class="table table-striped table-bordered table-hover" id="dataTables">
+                                        <thead>
+                                            <tr>
+                                                
+                                                <th>Nro: </th>
+                                                <th>Mes: </th>
+                                                <th>Total de requerimientos:</th>
+                                                <th>Accion</th>
+                                
+
+                                            </tr>
+                                        </thead>                                 
+                                        <tbody>
+                                        <?php foreach ($this->_lista as $sistemas): ?>
+                                    <tr class="info">    
+                                        
+                                        
+                                        <td align="center"><?php echo $sistemas['mes'];?></td>
+                                        <td align="center"><?php echo $sistemas['resultado'];?></td>
+                                        <td align="center"><?php echo $sistemas['total'];?></td>
+
+
+                                        <td align="center">                          
+
+                                        <a href="<?php echo BASE_URL."reportes/reportes_pdf_sistemas_detallados/". $sistemas['mes']."/".$sistemas['periodo'];?>">
+                                            <span title="Ver por despacho" class="glyphicon glyphicon-eye-open"></span>                                    
+                                        </a>
+                                   
+                                        </td>
+                                       
+
+                                    </tr>
+                                <?php endforeach ?>
+                                        </tbody>
+                                </table>
+                            </form>
+                          </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>      
+
+    <br><br>
+    <br><br>

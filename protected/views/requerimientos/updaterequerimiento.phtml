@@ -1,0 +1,224 @@
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<ol class="breadcrumb">
+    <li>
+        <i class="fa fa-home">
+        <?php  if (isset($_view_params['menu'])):?>
+        <?php  for ($i= 0; $i < count($_view_params['menu']); $i++):?>         
+        <a href="<?php  echo $_view_params['menu'][$i]['link'];?>"><?php  echo $_view_params['menu'][$i]['title']; ?></a></i>
+
+        <?php  endfor;?>
+        <?php  endif;?> 
+
+    </li>
+
+    <li class="active">
+        <i class="fa fa-keyboard-o"></i> Sistema
+    </li>
+
+  
+
+    <li class="active">
+        <i class="fa fa-file-text"></i> Actualizar Requerimiento
+    </li>
+</ol>
+
+<body>
+     <header class="header">
+		<div class= "row ">
+		    <div class="col-md-10 col-md-offset-1" >
+			<form id="valreque" class="form-horizontal" action="<?php  echo BASE_URL;?>requerimientos/updaterequerimiento" method="post">
+
+				<div class= "panel panel-primary" >
+		 			<div class= "panel-heading" >
+		 				<h3 class= "panel-title fa fa">Datos del Despacho</h3>
+		 			</div>		 					
+		 			<div class="panel-body">
+
+					<div class="form-group">
+						<label class="control-label col-sm-4 col-md-offset-0">Direccion</label>
+          
+					</div>	
+
+					<div class="form-group">
+
+							<div class="col-sm-4">
+								<select class="form-control"  id="areaa"  >
+									<option value="<?php echo $this->_requerimiento[0]['pdi'] ?>"><?php echo $this->_requerimiento[0]['padre_padre'] ?></option>
+								</select>									
+							</div>
+
+							<div class="col-sm-4">
+								<select class="form-control"  name="areab" id="areab" >
+									<option value="<?php echo $this->_requerimiento[0]['abid'] ?>"><?php echo $this->_requerimiento[0]['padre_despacho'] ?></option>										
+								</select>									
+							</div>
+
+							<div class="col-sm-4">
+								<select class="form-control"  name="areac" id="areac"  >
+									<option value="<?php echo $this->_requerimiento[0]['arcid'] ?>"><?php echo $this->_requerimiento[0]['areac']?></option>				
+								</select>								
+							</div>		          
+					</div>	
+					<div class="form-group">
+						<div>
+							<label class="col-sm-2 col-md-offset-2">Codigo de area</label>
+						</div>
+
+						<div>
+							<label class="col-sm-2 col-md-offset-2">Numero de contacto</label>
+						</div>
+					</div>
+
+					<div class="form-group">
+						
+							<div class="col-sm-3 col-md-offset-2">
+								<select class="form-control" name="cod_area" id="cod_area">
+									<option value="<?php echo $this->_requerimiento[0]['ca'] ?>"><?php echo $this->_requerimiento[0]['cod_area'] ?></option>									
+								</select>
+							</div>
+							<div class="col-sm-3 col-md-offset-1">	
+								<input type="text" class="form-control" name="numero_tel_requerimiento" placeholder="Ingrese un numero de telefono" title="numero de telefono"  value="<?php echo $this->_requerimiento[0]['numero_tel_requerimiento'] ?>">
+							</div>
+					</div>											
+			
+		 			</div>
+		 		</div>
+		 		<div class= "panel panel-primary" >
+		 			<div class= "panel-heading">
+		 				<h3 class= "panel-title"> Datos del Requerimiento</h3>
+		 			</div>
+		 					
+		 			<div class="panel-body">		 				
+	        				<input type="hidden" name="id"  value="<?php echo $this->_requerimiento[0]['id'] ?>" >
+						    
+						    <div class="form-group">
+
+								<label class="col-sm-3 col-md-offset-0">Fecha del documento</label>
+								<label class="col-sm-3 col-md-offset-0">Fecha de culminacion</label>
+								<label class="col-sm-2 col-md-offset-0">Tipo de Requerimiento</label>					
+								<label class="col-sm-2 col-sm-offset-1">Tipo de Solicitud</label>
+							</div>
+
+
+							<div class="form-group">
+								
+								<div class="col-sm-3 col-md-offset-0">	
+						        	<input type="text" id="date" name="fecha_documento"  class="form-control" value="<?php echo $this->_requerimiento[0]['fecha_documento'] ?>">
+									<!-- <span class="input-group-addon glyphicon glyphicon-calendar"></span> -->
+								</div>
+							
+								<div class="col-sm-3 col-md-offset-0">								
+						            							            
+								    <input type="text" id="datepicker" name="fecha_culm"  class="form-control" value="<?php echo $this->_requerimiento[0]['fecha_culm'] ?>">
+									<!-- <span class="input-group-addon glyphicon glyphicon-calendar"></span>																	 -->
+								</div>
+
+					            <div class="col-sm-3 col-md-offset-0">
+									<select class="form-control" name="tipo_de_requerimiento" id="tipo_de_requerimiento">
+									<option value="<?php echo $this->_requerimiento[0]['tpr'] ?>"><?php echo $this->_requerimiento[0]['tipo de requerimiento'] ?></option>											
+									</select>							        	
+							   	</div>
+
+							   	<div class="col-sm-3 col-md-offset-0">
+									<select class="form-control" name="tipo_de_solicitud" id="tipo_de_solicitud" >
+									<option value="<?php echo $this->_requerimiento[0]['tps'] ?>"><?php echo $this->_requerimiento[0]['tipo de solicitud'] ?></option>	
+									</select>
+								</div>
+
+							</div>
+
+							<div class="form-group">
+								<div class="col-sm-4 col-sm-offset-0" class="" id="numero2">
+							 		<strong><p id="numero1"></p></strong>
+								</div>
+							</div>
+
+						    <div class="form-group">
+								<label class="col-sm-3 col-md-offset-0">N°</label>
+								<label class="col-sm-3 col-md-offset-0">Sistema</label>
+								<label class="col-sm-3 col-md-offset-0">Modulo</label>					
+								<label class="col-sm-3 col-sm-offset-0">Status</label>
+							</div>	
+
+							<div class="form-group">
+								
+								<div class="col-sm-3 col-md-offset-0">	
+									<input type="text" class="form-control" name="numero" placeholder="N° del documento" id="numero" title="N° del documento" value="<?php echo $this->_requerimiento[0]['numero'] ?>">		
+								</div>
+							
+								<div class="col-sm-3 col-md-offset-0">								
+						            							            
+										<select class="form-control" name="Sistema" id="Sistema">
+										<option value="<?php echo $this->_requerimiento[0]['padre_sistema'] ?>"><?php echo $this->_requerimiento[0]['padre_sistema'] ?></option>
+										</select>																
+								</div>
+
+					            <div class="col-sm-3 col-md-offset-0">
+										<select class="form-control" name="Modulo" id="Modulo">
+										<option value="<?php echo $this->_requerimiento[0]['mi'] ?>"><?php echo $this->_requerimiento[0]['modulo'] ?></option>
+										</select>						        	
+							   	</div>
+
+							   	<div class="col-sm-3 col-md-offset-0">
+										<select class="form-control" name="status" id="status">
+											<option value="<?php echo $this->_requerimiento[0]['st'] ?>"><?php echo $this->_requerimiento[0]['status'] ?></option>										
+										</select>
+								</div>
+
+							</div>		
+
+							<div class="form-group">
+								<label class="col-sm-3 col-md-offset-0">Descripción</label>
+
+							</div>
+
+							<div class="form-group">
+								<div class="col-sm-12">
+
+										<textarea type="text" class="form-control" name="descripcion" placeholder="Max. 120 Caracteres" maxlength="720" id="descripcion" class=estilotextarea1 cols="60" rows="2"><?php echo $this->_requerimiento[0]['descripcion'] ?></textarea> 				
+								</div>								
+							</div>
+
+							<div class="form-group">
+								<label class="col-sm-3 col-md-offset-0">Solución</label>
+
+							</div>
+
+							<div class="form-group">
+								<div class="col-sm-12">
+
+											<textarea type="text" class="form-control" name="solucion" placeholder="Max. 120 Caracteres" maxlength="120" id="solucion" class=estilotextarea2 cols="60" rows="2"><?php echo $this->_requerimiento[0]['solucion'] ?></textarea> 			
+								</div>								
+							</div>
+
+							<div class="form-group">
+								<label class="col-sm-3 col-md-offset-0">Observación</label>
+
+							</div>
+
+							<div class="form-group">
+								<div class="col-sm-12">
+
+											<textarea type="text" class="form-control" name="observaciones" placeholder="Max. 120 Caracteres" maxlength="120" id="observaciones" class=estilotextarea2 cols="60" rows="2" ><?php echo $this->_requerimiento[0]['observaciones'] ?></textarea>					
+								</div>								
+							</div>							
+
+
+
+						<div class="col-sm-offset-6">
+							<input type="submit" value="Registrar" class="btn btn-primary">
+						</div>
+		 		 		
+		 		</div>
+		 		
+		 	
+		 		</form>	
+		 	</div>
+		</div>
+	</header>
+</body>
+

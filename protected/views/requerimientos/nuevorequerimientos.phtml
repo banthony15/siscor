@@ -1,0 +1,309 @@
+
+<ol class="breadcrumb">
+    <li>
+        <i class="fa fa-home">
+        <?php  if (isset($_view_params['menu'])):?>
+        <?php  for ($i= 0; $i < count($_view_params['menu']); $i++):?>         
+        <a href="<?php  echo $_view_params['menu'][$i]['link'];?>"><?php  echo $_view_params['menu'][$i]['title']; ?></a></i>
+
+        <?php  endfor;?>
+        <?php  endif;?> 
+
+    </li>
+
+    <li class="active">
+        <i class="fa fa-keyboard-o"></i> Sistema
+    </li>
+
+     <li class="active">
+        <i class="fa fa-users"></i>
+
+        <?php  if (isset($_view_params['menu4'])):?>
+        <?php  for ($i= 0; $i < count($_view_params['menu4']); $i++):?>         
+        <a href="<?php  echo $_view_params['menu4'][$i]['link'];?>"><?php  echo $_view_params['menu4'][$i]['title']; ?></a>
+
+        <?php  endfor;?>
+        <?php  endif;?> 
+
+    </li>      
+
+    <li class="active">
+        <i class="fa fa-file-text"></i> Levantar Requerimiento
+    </li>
+</ol>
+
+<body>
+     <header class="header">
+		<div class= "row ">
+			<div class="col-md-10 col-md-offset-1" >
+			<form id="valreque" class="form-horizontal" action="<?php  echo BASE_URL;?>requerimientos/nuevorequerimientos" method="post">
+
+		 		<div class= "panel panel-primary" >
+		 			<div class= "panel-heading" >
+		 				<h3 class= "panel-title fa fa">Datos del Solicitante</h3>
+		 			</div>
+							
+		 			<div class="panel-body">
+
+
+					<div class="form-group">
+						
+						<div class="col-sm-3 col-sm-offset-0" class="" id="cedula2">
+	   						 <strong><p id="cedula1"></p></strong>
+	   					</div>
+
+						<div class="col-sm-4 col-sm-offset-0" class="" id="credencial2">
+						 		<strong><p id="credencial1"></p></strong>
+						</div>	
+
+					</div>
+					
+					<div class="form-group">
+						<label class="col-sm-1 col-md-offset-0">Cedula</label>
+						<label class="col-sm-2 col-md-offset-2">Credencial</label>
+						<label class="col-sm-3 col-md-offset-1">Primer Nombre</label>
+						<label class="col-sm-2 col-md-offset-0">Segundo Nombre</label>
+					</div>
+
+					<div class="form-group">
+	
+						
+							<div class="col-sm-3 col-sm-offset-0">								
+									<input type="text" class="form-control" name="cedula" placeholder="Ej. 10111233" id="cedula" title="Cedula">										
+							</div>
+
+							<div class="col-sm-3 col-sm-offset-0">								
+									<input type="text" class="form-control" name="credencial" placeholder="Ej. 10111" id="credencial" title="credencial">											
+							</div>
+						
+							<div class="col-sm-3 col-sm-offset-0">						
+								<input type="text" class="form-control"  name="nombre_1" " placeholder="Ej. Rafael" title="nombre_1" >	
+							</div>
+						
+							<div class="col-sm-3 col-sm-offset-0">							
+								<input type="text" class="form-control"  name="nombre_2"  placeholder="Ej. Jose" title="nombre_2" >
+							</div>							
+
+					</div>				
+					
+					<div class="form-group">
+
+						<label class="col-sm-3 col-md-offset-0">Primer Apellido</label>
+						<label class="col-sm-2 col-md-offset-0">Segundo Apellido</label>						
+						<label class="col-sm-1 col-md-offset-1">Cargo</label>						
+						<label class="col-sm-2 col-md-offset-2">Jerarquia</label>
+
+					</div>
+
+										
+							    
+
+					<div class="form-group">
+
+						<div class="col-sm-3 col-md-offset-0">
+							<input type="text" class="form-control"  name="apellido_1" placeholder="Ej. Lopez" title="apellido_1" >		
+						</div>
+					
+						<div class="col-sm-3 col-md-offset-0">						
+							<input type="text" class="form-control"  name="apellido_2"  placeholder="Ej. Dominguez" title="apellido_2" >
+						</div>
+
+						<div class="col-sm-3 col-md-offset-0">
+							<input type="text" class="form-control"  name="cargo"  placeholder="Ej. Analista Contable" title="Cargo" >
+						</div>
+					
+						<div class="col-sm-3 col-md-offset-0">
+								<select class="form-control"  name="jerarquia"  id="jerarquia" title="jerarquia" >
+									<option>Seleccione...</option>									
+								</select>
+						</div>							
+					</div>					
+
+					<div class="form-group">
+					
+						<label class="col-sm-5">correo electronico</label>
+
+					</div>
+
+					<div class="form-group">
+
+						<div class="col-sm-3">
+							<input type="text"  class="form-control" name="correo"  placeholder="Ej. adominguez@gmail.com" title="Correo">
+						</div>
+
+					</div>
+
+		 			</div>
+		 		</div>
+
+				<div class= "panel panel-primary" >
+		 			<div class= "panel-heading" >
+		 				<h3 class= "panel-title fa fa">Datos del Despacho</h3>
+		 			</div>		 					
+		 			<div class="panel-body">
+
+					<div class="form-group">
+						<label class="control-label col-sm-4 col-md-offset-0">Direccion</label>
+          
+					</div>	
+
+					<div class="form-group">
+
+							<div class="col-sm-4">
+								<select class="form-control"  name="areaa" id="areaa">
+									<option>Seleccione...</option>
+								</select>								
+							</div>
+
+							<div class="col-sm-4">
+								<select class="form-control"  name="areab" id="areab">
+									<option>Seleccione...</option>										
+								</select>								
+							</div>
+
+							<div class="col-sm-4">
+								<select class="form-control"  name="areac" id="areac">
+									<option>Seleccione...</option>									
+								</select>								
+							</div>		          
+					</div>	
+					<div class="form-group">
+						<div>
+							<label class="col-sm-2 col-md-offset-2">Codigo de area</label>
+						</div>
+
+						<div>
+							<label class="col-sm-2 col-md-offset-2">Numero de contacto</label>
+						</div>
+					</div>
+
+					<div class="form-group">
+						
+							<div class="col-sm-3 col-md-offset-2">
+								<select class="form-control"  name="cod_area" id="cod_area">
+									<option>Seleccione...</option>									
+								</select>
+							</div>
+							<div class="col-sm-3 col-md-offset-1">	
+									<input type="text" class="form-control" name="numero_tel_requerimiento" placeholder="Ej. 8963214" title="numero de telefono">		
+							</div>
+					</div>											
+			
+		 			</div>
+		 		</div>
+		 		
+		 		<div class= "panel panel-primary" >
+		 			<div class= "panel-heading">
+		 				<h3 class= "panel-title fa fa" > Datos del Requerimiento</h3>
+		 			</div>
+		 					
+		 			<div class="panel-body">		 				
+
+							<div class="form-group">
+								<div class="col-sm-4 col-sm-offset-3" class="" id="numero2">
+							 		<strong><p id="numero1"></p></strong>
+								</div>
+							</div>
+
+							<div class="form-group">
+								<label class="col-sm-2 col-md-offset-0">Tipo de Solicitud</label>
+								<label class="col-sm-3 col-md-offset-1">N°</label>
+								<label class="col-sm-2 col-md-offset-0" >Fecha de Tramitacion</label>					
+								<label class="col-sm-2 col-sm-offset-1">Tipo de Requerimiento</label>
+							</div>
+
+							<div class="form-group">
+								
+									<div class="col-sm-3 col-md-offset-0">
+									<select class="form-control" name="tipo_de_solicitud" id="tipo_de_solicitud">
+										<option>Seleccione...</option>	
+									</select>
+								</div>
+
+
+							
+								<div class="col-sm-3 col-md-offset-0">								
+										<input type="text" class="form-control" name="numero" placeholder="Ej. 1425384775" id="numero" title="N° del documento">							
+								</div>
+
+					            <div class="col-sm-3 col-md-offset-0">
+					            	<div class="input-group">
+							        	<input type="text" id="date" name="fecha_documento" placeholder="Ej. 2018-10-08"  class="form-control">
+								 	 <span class="input-group-addon glyphicon glyphicon-calendar"></span>
+									</div>									        	
+							   	</div>
+
+							   	<div class="col-sm-3 col-md-offset-0">
+										<select class="form-control" name="tipo_de_requerimiento" id="tipo_de_requerimiento">
+											<option>Seleccione...</option>											
+										</select>
+								</div>
+
+							</div>
+
+
+							<div class="form-group">
+
+						    	
+						    	<label class="col-sm-2 col-sm-offset-0">Sistema</label>
+						    	<label class="col-sm-3 col-sm-offset-1">Modulo</label>
+						    	<label class="control-label col-sm-1">Status</label>
+
+							</div>
+
+							<div class="form-group">
+
+								<div class="col-sm-3 col-md-offset-0">
+										<select class="form-control" name="Sistema" id="Sistema">
+										<option>Seleccione...</option>
+										</select>
+								</div>
+								
+								<div class="col-sm-3 col-md-offset-0">
+										<select class="form-control" name="Modulo" id="Modulo">
+										<option>Seleccione...</option>
+										</select>
+								</div>	
+
+								<div class="col-sm-3 col-md-offset-0">
+										<select class="form-control" name="status" id="status">
+											<option>Seleccione...</option>										
+										</select>
+								</div>
+
+							</div>				
+
+							<div class="form-group">
+								<label class="col-sm-3 col-md-offset-0">Descripción</label>
+
+							</div>
+
+							<div class="form-group">
+								<div class="col-sm-12">
+									<textarea type="text" class="form-control" name="descripcion" placeholder="Max 750 Caracteres." maxlength="750" minlength="20" id="descripcion" class=estilotextarea1 cols="60" rows="2"></textarea> 				
+								</div>								
+							</div>
+	 		 									<div class="col-sm-offset-6">
+							<input type="submit" value="Registrar" class="btn btn-primary" onclick="return confirm('¿Esta seguro que desea registrar este requerimiento?');">
+						</div>
+		 			</div>
+		 		</div>
+
+
+
+		 		 		
+		 			</div>
+		 		</div>
+		 		
+		 	
+		 		</form>	
+		 	</div>
+		</div>
+	</header>
+</body>
+</html>
+<script src="<?php echo PUBLIC_URL;?>js/jquery.js"></script>
+<script src="<?php echo PUBLIC_URL;?>js/select2.min.js"></script>
+<script type="text/javascript">
+      $(".myselect").select2();
+</script>

@@ -1,0 +1,305 @@
+<ol class="breadcrumb">
+    <li>
+        <i class="fa fa-home">
+        <?php  if (isset($_view_params['menu'])):?>
+        <?php  for ($i= 0; $i < count($_view_params['menu']); $i++):?>         
+        <a href="<?php  echo $_view_params['menu'][$i]['link'];?>"><?php  echo $_view_params['menu'][$i]['title']; ?></a></i>
+
+        <?php  endfor;?>
+        <?php  endif;?> 
+
+    </li>
+
+    <li class="active">
+        <i class="fa fa-gear"></i> Telemática
+    </li>
+
+    <li class="active">
+        <i class="fa fa-linux"></i> Área de soporte de equipos tecnológicos
+    </li>
+
+    <li class="active">
+        <i class="  fa fa-eye"></i> Asignacion de Requerimiento
+    </li>
+</ol>
+
+<body>
+     <header class="header">
+    <div class= "row ">
+        <div class="col-md-10 col-sm-offset-1" >
+      <form id="valreque" class="form-horizontal" action="<?php  echo BASE_URL;?>telematica/aticket" method="post">
+
+        <div class= "panel panel-primary" >
+          <div class= "panel-heading" >
+            <h3 class= "panel-title fa fa-user">Datos del Solicitante</h3>
+          </div>
+              
+          <div class="panel-body">
+
+
+          <div class="form-group">
+            <div class="col-sm-1">
+              <input type="hidden" name="id" value="<?php echo $this->_micro[0]['id'] ?>" >
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="col-sm-2" class="" id="div">
+                    <strong><p id="nota"></p></strong>
+              </div>    
+            <label class="control-label col-sm-1">Cedula</label>
+              <div class="col-sm-3">                
+                <input type="text" class="form-control" name="cedula" readonly="" placeholder="Cedula" id="cedula" title="Cedula" value="<?php echo $this->_micro[0]['cedula'] ?>">                   
+              </div>
+
+            <label class="control-label col-sm-2">Credencial</label>
+              <div class="col-sm-3">                
+                <input type="text" class="form-control" name="credencial" readonly="" placeholder="Credencial" id="credencial" title="credencial" value="<?php echo $this->_micro[0]['credencial'] ?>">                   
+              </div>
+              <div class="col-sm-2" class="" id="div">
+                    <strong><p id="nota"></p></strong>
+              </div>  
+
+          </div>              
+
+          <div class="form-group">
+            <label class="control-label col-sm-3">Primer Nombre</label>
+              <div class="col-sm-3">            
+                <input type="text" class="form-control"  name="nombre_1" readonly="" placeholder="Primer Nombre" title="nombre_1" value="<?php echo $this->_micro[0]['nombre_1'] ?>">               
+              </div>
+            <label class="control-label col-sm-2">Segundo Nombre</label>
+              <div class="col-sm-3">              
+                <input type="text" class="form-control"  name="nombre_2" readonly="" placeholder=" Segundo Nombre" title="nombre_2" value="<?php echo $this->_micro[0]['nombre_2'] ?>">               
+              </div>
+            </div>
+
+          <div class="form-group">
+            <label class="control-label col-sm-3">Primer Apellido</label>
+              <div class="col-sm-3">
+                <input type="text" class="form-control"  name="apellido_1" readonly="" placeholder="Primer apellido" title="apellido_1" value="<?php echo $this->_micro[0]['apellido_1'] ?>">             
+              </div>
+            <label class="control-label col-sm-2">Segundo Apellido</label>              
+              <div class="col-sm-3">            
+                <input type="text" class="form-control"  name="apellido_2" readonly="" placeholder=" Segundo apellido" title="apellido_2" value="<?php echo $this->_micro[0]['apellido_2'] ?>">               
+              </div>
+          </div>
+
+          <div class="form-group">
+            <label class="control-label col-sm-3">Cargo</label>
+              <div class="col-sm-3">
+                <input type="text" class="form-control"  name="cargo" readonly="" placeholder="Cargo" title="Cargo" value="<?php echo $this->_micro[0]['cargo'] ?>">
+              </div>
+
+            <label class="control-label col-sm-2">Jerarquia</label>
+              <div class="col-sm-3">
+                <select class="form-control" disabled="" name="jerarquia"  id="jerarquia" title="jerarquia" >
+                  <option><?php echo $this->_micro[0]['jerarquia'] ?></option>                  
+                </select>
+              </div>
+          </div>
+
+          <div class="form-group">
+            <label class="control-label col-sm-5">correo electronico</label>
+              <div class="col-sm-3">
+                  <input type="text"  class="form-control" name="correo" readonly="" placeholder="Ingrese un correo" title="Correo" value="<?php echo $this->_micro[0]['correo'] ?>">
+              </div>
+          </div>
+
+
+
+          </div>
+        </div>
+
+        <div class= "panel panel-primary" >
+          <div class= "panel-heading" >
+            <h3 class= "panel-title fa fa-user">Despacho</h3>
+          </div>              
+          <div class="panel-body">
+
+          <div class="form-group">
+            <label class="control-label col-sm-3">Numero de contacto</label>
+              <div class="col-sm-3">
+                <select class="form-control" disabled="" name="cod_area" id="cod_area">
+                  <option><?php echo $this->_micro[0]['cod_area'] ?></option>                  
+                </select>
+              </div>
+              <div class="col-sm-5">  
+                  <input type="text" class="form-control" name="numero_micro" readonly="" placeholder="Ingrese un numero de telefono" title="numero de telefono" value="<?php echo $this->_micro[0]['numero_micro'] ?>">   
+              </div>
+          </div>            
+
+
+          <div class="form-group">
+            <label class="control-label col-sm-4">Direccion</label>
+              <div class="col-sm-4">
+                <select class="form-control" disabled="" name="areac" id="areac">
+                  <option><?php echo $this->_micro[0]['descripcion_depen'] ?></option>                  
+                </select>               
+              </div>                
+          </div>          
+      
+
+          </div>
+        </div>      
+
+        <div class= "panel panel-primary" >          
+          <div class= "panel-heading">
+            <h3 class= "panel-title">Datos Del Requerimiento</h3>
+          </div>
+              
+          <div class="panel-body">
+
+              <div class="form-group">
+                <label class="control-label col-sm-3">Fecha del levantamiento del Requerimiento</label>
+                  <div class="col-sm-3">                
+                      <input type="text" class="form-control" readonly="" name="fecha_micro" placeholder="fecha de inicio" id="fecha_micro" title="fecha de inicio" value="<?php echo $this->_micro[0]['fecha_micro'] ?>">              
+                  </div>  
+              <label class="control-label col-sm-2" >Fecha de Culminacion</label>                       
+              <div class="col-sm-3">            
+                <input type="text" class="form-control"  readonly="" name="fecha_entrega"  placeholder="N/A" title="fecha_entrega" value="<?php echo $this->_micro[0]['fecha_entrega'] ?>">                
+              </div>
+              </div>              
+
+              <div class="form-group">
+                <label class="control-label col-sm-3">Tipo de Equipos</label>
+                  <div class="col-sm-3">
+                    <select class="form-control" disabled="" name="tipo_equipo" id="tipo_equipo">
+                  <option><?php echo $this->_micro[0]['tipo_de_equipo'] ?></option>
+
+
+                    </select>
+                  </div>
+              <label class="control-label col-sm-2" >Marca del Equipo</label>                      
+              <div class="col-sm-3">            
+                <input type="text" class="form-control" readonly="" name="marca_del_equipo"  placeholder="Marca del equipo" title="marca del equipos" value="<?php echo $this->_micro[0]['marca_del_equipo'] ?>" >                
+              </div>
+              </div>
+
+
+              <div class="form-group">
+                <label class="control-label col-sm-3">Modelo del Equipo</label>
+                  <div class="col-sm-3">                
+                      <input type="text" class="form-control" readonly="" name="modelo_del_equipo" placeholder="Modelo del Equipo" id="modelo_del_equipo" title="Modelo del Equipo" value="<?php echo $this->_micro[0]['modelo_del_equipo'] ?>">              
+                  </div>  
+              <label class="control-label col-sm-2" >Serial del equipo</label>                       
+              <div class="col-sm-3">            
+                <input type="text" class="form-control"  readonly="" name="serial_del_equipo"  placeholder="serial del equipo" title="serial_del_equipo" value="<?php echo $this->_micro[0]['serial_del_equipo'] ?>">                
+              </div>
+              </div>
+
+              <div class="form-group">
+                <label class="control-label col-sm-3">Pieza Dañada</label>
+                  <div class="col-sm-3">
+                    <select class="form-control" title="¡Si su respuesta es afirmativa, por favor detallar en la descripción, la pieza que se encuentra dañada!" disabled="" name="pieza_danada" id="pieza_danada">
+                  <option><?php echo $this->_micro[0]['pieza_d'] ?></option>
+                    </select>
+                  </div>
+                <label class="control-label col-sm-2">Rayado</label>
+                  <div class="col-sm-3">
+                    <select class="form-control" title="¡Si su respuesta es afirmativa, por favor detallar en la descripción, la pieza que se encuentra Rayada!" disabled=""  name="rayado" id="rayado">
+                  <option><?php echo $this->_micro[0]['rayado'] ?></option>
+                    </select>
+                  </div>                  
+              </div>
+
+              <div class="form-group">
+                <label class="control-label col-sm-3 ">Pieza Suelta</label>
+                  <div class="col-sm-3">
+                    <select class="form-control"  title="¡Si su respuesta es afirmativa, por favor detallar en la descripción, la pieza que se encuentra suelta!" disabled="" name="pieza_suelta" id="pieza_suelta">
+                  <option><?php echo $this->_micro[0]['pieza_s'] ?></option>                    
+                    </select>
+                  </div>
+                <label class="control-label col-sm-2">Marca del Procesador</label>
+                  <div class="col-sm-3">
+                    <select class="form-control" title="¡POR FAVOR describir el modelo del procesador en la descripcion!" disabled="" name="marca_procesador" id="marca_procesador">
+                  <option><?php echo $this->_micro[0]['marca_p'] ?></option>
+                    </select>
+                  </div>                  
+              </div>
+    
+              <div class="form-group">
+                <label class="control-label col-sm-3">Tipo de RAM</label>
+                  <div class="col-sm-3">
+                    <select class="form-control" disabled="" name="tipo_de_ram" id="tipo_de_ram">
+                  <option><?php echo $this->_micro[0]['tipo_de_ram'] ?></option>
+                    </select>
+                  </div>
+                <label class="control-label col-sm-2">Capacidad de RAM</label>
+                  <div class="col-sm-3">
+                    <select class="form-control" disabled="" name="capacidad_ram" id="capacidad_ram">
+                  <option><?php echo $this->_micro[0]['capacidad_r'] ?></option>
+                    </select>
+                  </div>                  
+              </div>
+              <div class="form-group">
+                <label class="control-label col-sm-3">Tipo de Disco Duro</label>
+                  <div class="col-sm-3">
+                    <select class="form-control" disabled="" name="tipo_disco_duro" id="tipo_disco_duro">
+                  <option><?php echo $this->_micro[0]['tipo_dd'] ?></option>
+                    </select>
+                  </div>
+                <label class="control-label col-sm-2">Capacidad de almacenamiento</label>
+                  <div class="col-sm-3">
+                    <select class="form-control" disabled="" name="capacidad_disco_duro" id="capacidad_disco_duro">
+                  <option><?php echo $this->_micro[0]['capacidad_dd'] ?></option>
+                    </select>
+                  </div>                  
+              </div>                            
+
+              <div class="form-group">
+                <label class="control-label col-sm-4">Descripción</label>
+                  <div class="col-sm-5">
+
+                    <textarea type="text" class="form-control" readonly="" name="descripcion" placeholder="Max 500 Caracteres." maxlength="500" id="descripcion" class=estilotextarea1 cols="60" rows="2"><?php echo $this->_micro[0]['descripcion'] ?></textarea> 
+        
+                  </div>
+              </div>
+
+              <div class="form-group">
+                <label class="control-label col-sm-4">Solucion</label>
+                  <div class="col-sm-5">
+
+                    <textarea type="text" class="form-control" readonly="" name="descripcion" placeholder="Max 500 Caracteres." maxlength="500" id="descripcion" class=estilotextarea1 cols="60" rows="2"><?php echo $this->_micro[0]['solucion'] ?></textarea> 
+        
+                  </div>
+              </div>              
+            
+          </div>
+        </div>
+        <div class= "panel panel-primary" >
+          <div class= "panel-heading" >
+            <h3 class= "panel-title fa fa-user">Asignación de Requerimiento</h3>
+          </div>              
+          <div class="panel-body">
+
+          <div class="form-group">
+            <label class="control-label col-sm-4">Tecnico</label>
+              <div class="col-sm-4">
+                <select class="myselect" name="persona_t" id="resultado" style="width:300px;">
+                  <option>Seleccione...</option>                  
+                </select>               
+              </div>                
+          </div> 
+            <div class="col-sm-offset-6">
+              <input type="submit" value="Registrar" class="btn btn-primary" onclick="return confirm('¿Esta seguro que desea registrar este requerimiento?');">
+            </div>
+          </div>
+        </div>                
+      
+        </form> 
+      </div>
+    </div>
+  </header>
+</body>
+</html>
+ 
+
+<script src="<?php echo PUBLIC_URL;?>js/jquery.js"></script>
+<script src="<?php echo PUBLIC_URL;?>js/select2.min.js"></script>
+<script type="text/javascript">
+      $(".myselect").select2();
+</script>
+
+
+
+    

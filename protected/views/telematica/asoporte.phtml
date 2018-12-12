@@ -1,0 +1,171 @@
+  <ol class="breadcrumb">
+      <li>
+          <i class="fa fa-home">
+          <?php  if (isset($_view_params['menu'])):?>
+          <?php  for ($i= 0; $i < count($_view_params['menu']); $i++):?>         
+          <a href="<?php  echo $_view_params['menu'][$i]['link'];?>"><?php  echo $_view_params['menu'][$i]['title']; ?></a></i>
+
+          <?php  endfor;?>
+          <?php  endif;?> 
+
+      </li>
+
+      <li class="active">
+          <i class="fa fa-gear"></i> Telemática
+      </li>
+
+      <li class="active">
+          <i class="fa fa-desktop"></i> Área de servicio
+      </li> 
+
+      <li class="active">
+          <i class="fa fa-file-text"></i> Asignacion/Reasignacion de funcionario
+      </li>
+  </ol>
+
+  <body>
+       <header class="header">
+      <div class= "row ">
+          <div class="col-md-9 col-sm-offset-2" >
+        <form id="micro" class="form-horizontal" action="<?php  echo BASE_URL;?>telematica/asoporte" method="post">    
+                   
+
+
+  <!--         <div class= "panel panel-primary" >
+            <div class= "panel-heading" >
+              <h3 class= "panel-title fa fa-user">Despacho</h3>
+            </div>              
+            <div class="panel-body">
+
+            <div class="form-group">
+              <div class="col-sm-1">
+                <input type="hidden" name="id" value="<?php echo $this->_soport[0]['id'] ?>" >
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="control-label col-sm-3">Numero de contacto</label>
+                <div class="col-sm-3">
+                  <select class="form-control" disabled="" name="cod_area" id="cod_area">
+                    <option value="<?php echo $this->_soport[0]['cai'] ?>"><?php echo $this->_soport[0]['codigo_area'] ?></option>                  
+                  </select>
+                </div>
+                <div class="col-sm-5">  
+                    <input type="text" class="form-control" name="numero_tel" readonly="" placeholder="Ingrese un numero de telefono" title="numero de telefono" value="<?php echo $this->_soport[0]['numero_tel'] ?>">   
+                </div>
+            </div>            
+
+
+            <div class="form-group">
+
+
+            <label class="control-label col-sm-4"></label>
+                <div class="col-sm-4">
+                  <select class="form-control" disabled="" name="areac" id="areac">
+                    <option><?php echo $this->_soport[0]['descripcion_depen'] ?></option>                   
+                  </select>               
+                </div>              
+            </div>        
+        
+
+            </div>
+          </div>      
+
+          <div class= "panel panel-primary" >          
+            <div class= "panel-heading">
+              <h3 class= "panel-title">Datos Del Requerimiento</h3>
+            </div>
+                
+            <div class="panel-body">
+
+                <div class="form-group">
+                  <label class="control-label col-sm-3">Fecha del levantamiento del Requerimiento</label>
+                    <div class="col-sm-3">                
+                        <input type="text" class="form-control" disabled=""  name="fecha_inicio" placeholder="fecha de inicio" id="fecha_inicio" title="fecha de inicio" value="<?php echo $this->_soport[0]['fecha_inicio'] ?>">              
+                    </div>  
+                <label class="control-label col-sm-2" >Fecha de Culminacion</label>                       
+                <div class="col-sm-3">            
+                  <input type="datetime-local" class="form-control" disabled=""  name="fecha_culminacion"  placeholder="N/A" title="fecha_culminacion" value="<?php echo $this->_soport[0]['fecha_culminacion'] ?>">                
+                </div>
+                </div>          
+
+                <div class="form-group">
+                  <label class="control-label col-sm-4">Tipo de Requerimiento</label>
+                    <div class="col-sm-5">
+                      <select class="form-control" disabled="" name="tipo_de_rt" id="tipo_de_rt">
+                        <option value="<?php echo $this->_soport[0]['tspr'] ?>"><?php echo $this->_soport[0]['tipo_de_requerimiento'] ?></option>
+                      </select>
+                    </div>
+                </div> 
+                            
+
+                <div class="form-group">
+                  <label class="control-label col-sm-4">Descripción</label>
+                    <div class="col-sm-5">
+
+                      <textarea type="text" class="form-control" readonly="" name="descripcion" placeholder="Max 500 Caracteres." maxlength="500" id="descripcion" class=estilotextarea1 cols="60" rows="2"><?php echo $this->_soport[0]['descripcion'] ?></textarea> 
+          
+                    </div>
+                </div>
+
+                <div class="form-group">
+                  <label class="control-label col-sm-4">Solucion</label>
+                    <div class="col-sm-5">
+
+                      <textarea type="text" class="form-control" readonly="" name="solucion" placeholder="Max 500 Caracteres." maxlength="500" id="descripcion" class=estilotextarea1 cols="60" rows="2"><?php echo $this->_soport[0]['solucion'] ?></textarea> 
+          
+                    </div>
+                </div>
+
+                <div class="form-group">
+                  <label class="control-label col-sm-4">observacion</label>
+                    <div class="col-sm-5">
+
+                      <textarea type="text" class="form-control" readonly="" name="observacion" placeholder="Max 500 Caracteres." maxlength="500" id="observacion" class=estilotextarea1 cols="60" rows="2"><?php echo $this->_soport[0]['observacion'] ?></textarea> 
+          
+                    </div>
+                </div>            
+
+
+            </div>
+          </div> -->
+          
+          <div class= "panel panel-primary" >
+            <div class= "panel-heading" >
+              <h3 class= "panel-title">Técnico</h3>
+            </div>              
+            <div class="panel-body">
+
+            <div class="form-group">
+              <label class="col-sm-4 col-sm-offset-3">Funcionario</label>
+                
+            </div>
+
+            <div class="form-group">
+             
+                <div class="col-sm-4 col-sm-offset-3">
+                  <select class="myselect" name="persona_sp" id="resultado" style="width:300px;">
+                    <option>Seleccione...</option>                  
+                  </select>               
+                </div>                
+            </div>          
+
+              <div class="col-sm-offset-5">
+                <input type="submit" value="Registrar" class="btn btn-primary" onclick="return confirm('¿Esta seguro que desea registrar este requerimiento?');">
+              </div>
+
+            </div>
+          </div>         
+        
+          </form> 
+        </div>
+      </div>
+    </header>
+  </body>
+  </html>
+
+  <script src="<?php echo PUBLIC_URL;?>js/jquery.js"></script>
+  <script src="<?php echo PUBLIC_URL;?>js/select2.min.js"></script>
+  <script type="text/javascript">
+        $(".myselect").select2();
+  </script>

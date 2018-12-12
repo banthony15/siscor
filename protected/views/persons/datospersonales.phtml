@@ -1,0 +1,92 @@
+<ol class="breadcrumb">
+    <li>
+        <i class="fa fa-home"></i>
+
+        <?php  if (isset($_view_params['menu'])):?>
+        <?php  for ($i= 0; $i < count($_view_params['menu']); $i++):?>         
+        <a href="<?php  echo $_view_params['menu'][$i]['link'];?>"><?php  echo $_view_params['menu'][$i]['title']; ?></a>
+
+        <?php  endfor;?>
+        <?php  endif;?> 
+
+    </li>
+    <li class="active">
+        <i class="fa fa-user"></i> Mis datos Personales
+    </li>
+</ol>
+
+<body>
+     <header class="header">
+        <div class="row">
+            <div class="col-md-10 col-md-offset-1" >
+                <form  id="personuser" class="form-horizontal" action="<?php  echo BASE_URL;?>persons/consultauser"   method="post">
+
+                <div class= "panel panel-primary" >
+                    <div class= "panel-heading" >
+                        <h3 class= "panel-title fa fa-user"></h3>
+                    </div>
+                            
+                    <div class="panel-body">
+
+
+<?php foreach ($this->_lista as $usuario): ?>
+                            <div class="form-group">
+
+                                <label class="control-label col-sm-5">Cedula</label>
+                                    <div class="col-sm-3">                              
+                                        <input type="text" class="form-control" value="<?php echo $usuario['cedula'];?>" readonly="" name="cedula" placeholder="Cedula" id="cedula" title="Cedula">                                     
+                                    </div>    
+                               
+                            </div>  
+
+
+
+                    <div class="form-group">
+                        <label class="control-label col-sm-3">Primer Nombre</label>
+                            <div class="col-sm-3">                      
+                                <input type="text" class="form-control" value="<?php echo $usuario['nombre_1'];?>" readonly="" name="nombre_1" placeholder="Primer Nombre" title="nombre_1">                               
+                            </div>
+                        <label class="control-label col-sm-2">Segundo Nombre</label>
+                            <div class="col-sm-3">                          
+                                <input type="text" class="form-control" value="<?php echo $usuario['apellido_1'];?>" readonly="" name="nombre_2" placeholder=" Segundo Nombre" title="nombre_2">                                 
+                            </div>
+                        </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-sm-3">Nombre de usuario</label>
+                            <div class="col-sm-3">
+                                <input type="text" class="form-control" value="<?php echo $usuario['usuario'];?>" readonly="" name="apellido_1" placeholder="Primer apellido" title="apellido_1">                         
+                            </div>
+                        <label class="control-label col-sm-2">Perfil</label>                          
+                            <div class="col-sm-3">                      
+                                <input type="text" class="form-control " value="<?php echo $usuario['perfil'];?>" readonly="" name="apellido_2" placeholder=" Segundo apellido" title="apellido_2">
+                            
+                            </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-sm-3">Pregunta de Seguridad</label>
+                            <div class="col-sm-3">
+
+                                <input type="text" class="form-control" value="<?php echo $usuario['pregunta'];?>" readonly="" name="cargo" placeholder="cargo" title="cargo">
+
+                            </div>
+                        <label class="control-label col-sm-2">Respuesta de Seguridad</label>                          
+                            <div class="col-sm-3">                      
+                                <input type="text" class="form-control" value="<?php echo $usuario['respuesta'];?>" readonly="" name="apellido_2" placeholder=" Segundo apellido" title="apellido_2">
+                            
+                            </div>
+                    </div>
+
+
+
+            <a href="<?php echo BASE_URL."persons/updatedatospersonales/". $usuario['id'] ; ?>">
+            <span title="Cambiar datos" class="glyphicon glyphicon-edit"></span>
+ <?php endforeach ?>
+                </div>
+            </div> 
+        </div>
+        </div>
+    </header>
+</body> 
+

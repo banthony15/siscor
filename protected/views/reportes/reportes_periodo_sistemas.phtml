@@ -1,0 +1,134 @@
+<ol class="breadcrumb">
+    <li>
+        <i class="fa fa-home"></i>
+
+        <?php  if (isset($_view_params['menu'])):?>
+        <?php  for ($i= 0; $i < count($_view_params['menu']); $i++):?>         
+        <a href="<?php  echo $_view_params['menu'][$i]['link'];?>"><?php  echo $_view_params['menu'][$i]['title']; ?></a>
+
+        <?php  endfor;?>
+        <?php  endif;?> 
+
+    </li>
+
+
+    <li class="active">
+        <i class="fa fa-keyboard-o"></i> Sistemas
+    </li>
+
+    <li class="active">
+        <i class="fa fa-file-pdf-o"></i> Reportes
+    </li>  
+
+    <li class="active">
+        <i class="fa fa-calendar"></i> Reportes por periodo
+    </li>
+
+</ol>
+<body>
+    <header class="header">
+        <div class="row">
+            <div class="col-md-6 col-sm-offset-3" >
+                <div class= "panel panel-primary" >
+                    <div class= "panel-heading" >
+                        <h3 class= "panel-title fa fa col-md-offset-5">Generar reporte</h3>
+                    </div>
+
+                        <br><br>
+                    <div class="panel-body">
+                        <div class="form-group">
+                            <div class="col-xs-6 col-md-offset-3">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+                                    <input onclick="validar()" type="text" id="reportes1" name="reportes1" placeholder="Ej. 11/2018"   class="form-control">
+
+                                </div>                                              
+                            </div>
+                        </div>
+
+                        <br><br>
+
+                    <div class="form-group">
+                        <div class="col-sm-3 col-md-offset-4">
+                            <div class="input-group col-md-offset-4">
+                                <input type="submit" name="boton" id="boton" onclick="location.href='javascript:pdf()';" value="Ver reporte" class="btn btn-primary" disabled>
+
+                            </div>                                           
+                        </div>
+                    </div>
+                        <br><br><br>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+</body> 
+
+<?php foreach ($this->_lista as $sistemas): ?>
+<?php endforeach ?>
+  
+<style>
+.ui-datepicker-calendar {
+    display: none;
+    }
+</style>
+
+<!-- <form>
+  First name: <input onkeyup="validar()" class="inputFormu" type="text" name="FirstName" ><br>
+  Last name: <input onkeyup="validar()" class="inputFormu" type="text" name="LastName" ><br>
+  <input id="boton"  type="submit" value="Submit" disabled>
+</form> -->
+
+<script type="text/javascript">
+    
+    function validar(){
+  var validado = true;
+  elementos = document.getElementsByClassName("form-control");
+  for(i=0;i<elementos.length;i++){
+    if(elementos[i].value == null){
+    validado = false
+    }
+  }
+  if(validado){
+  document.getElementById("boton").disabled = false;
+  
+  }else{
+     document.getElementById("boton").disabled = true;
+  //Salta un alert cada vez que escribes y hay un campo vacio
+  //alert("Hay campos vacios")   
+  }
+}
+
+</script>
+
+<script language="javascript">
+function pdf(){
+
+var reportes1 = document.getElementById('reportes1').value;
+
+var dir = "<?php echo BASE_URL."reportes/reportes_pdf_sistemas_detallados/";?>";
+var periodo = "<?php echo $sistemas['periodo'];?>";
+var igual = dir + reportes1;
+
+// var meses = document.getElementById('meses').value;
+// var periodo = document.getElementById('periodo').value;
+// var dir = "<?php echo BASE_URL."reportes/reportes_pdf_sistemas_detallados/".$sistemas['periodo'];?>";
+// var igual = dir + "/" + meses + "/" + periodo;
+// dir += document.getElementById('separador').value;
+// dir += document.getElementById('periodo').value;
+
+    // var nameInput = document.getElementById("new-name").value; 
+    // var emailInput = document.getElementById("new-email").value; 
+    // var noInput = document.getElementById("new-number").value; 
+    // var zipInput = document.getElementById("new-zip").value; 
+
+    // var resultInput  = nameInput + " " + emailInput + " " + noInput +  " " + zipInput ;
+
+window.location.href=igual;
+}
+</script>
+
+
+
+
+

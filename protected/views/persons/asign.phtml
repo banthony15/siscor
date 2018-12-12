@@ -1,0 +1,243 @@
+<ol class="breadcrumb">
+    <li>
+        <i class="fa fa-home"></i>
+
+        <?php  if (isset($_view_params['menu'])):?>
+        <?php  for ($i= 0; $i < count($_view_params['menu']); $i++):?>         
+        <a href="<?php  echo $_view_params['menu'][$i]['link'];?>"><?php  echo $_view_params['menu'][$i]['title']; ?></a>
+
+        <?php  endfor;?>
+        <?php  endif;?> 
+
+    </li>
+    <li class="active">
+        <i class="fa fa-user"></i> Gestion de Usuarios
+    </li>
+
+     <li class="active">
+        <i class="fa fa-user"></i>
+
+        <?php  if (isset($_view_params['menu2'])):?>
+        <?php  for ($i= 0; $i < count($_view_params['menu2']); $i++):?>         
+        <a href="<?php  echo $_view_params['menu2'][$i]['link'];?>"><?php  echo $_view_params['menu2'][$i]['title']; ?></a>
+
+        <?php  endfor;?>
+        <?php  endif;?> 
+
+    </li>    
+
+    <li class="active">
+        <i class="fa fa-edit"></i> Actualizacion de datos
+    </li>
+</ol>
+
+<body>
+	<header class="header">
+		<div class="row">
+			<div class="col-md-10 col-sm-offset-1" >
+				<form   class="form-horizontal" action="<?php  echo BASE_URL;?>persons/asign "	method="post">
+
+		 		<div class= "panel panel-primary" >
+		 			<input type="hidden" name="persona"  value="<?php echo $this->_persona[0]['id'] ?>" >
+		 			<div class= "panel-heading" >
+		 				<h3 class= "panel-title fa fa">Datos del Solicitante</h3>
+		 			</div>
+							
+		 			<div class="panel-body">
+
+
+					<div class="form-group">
+						
+						<div class="col-sm-3 col-sm-offset-0" class="" id="cedula2">
+	   						 <strong><p id="cedula1"></p></strong>
+	   					</div>
+
+						<div class="col-sm-4 col-sm-offset-0" class="" id="credencial2">
+						 		<strong><p id="credencial1"></p></strong>
+						</div>	
+
+					</div>
+					
+					<div class="form-group">
+						<label class="col-sm-1 col-md-offset-0">Cedula</label>
+						<label class="col-sm-2 col-md-offset-2">Credencial</label>
+						<label class="col-sm-3 col-md-offset-1">Primer Nombre</label>
+						<label class="col-sm-2 col-md-offset-0">Segundo Nombre</label>
+					</div>
+
+					<div class="form-group">
+	
+						
+							<div class="col-sm-3 col-sm-offset-0">								
+										<input type="text" class="form-control" name="cedula" placeholder="Cedula" id="cedula" title="Cedula" readonly="" value="<?php echo $this->_persona[0]['cedula'] ?>">										
+							</div>
+
+							<div class="col-sm-3 col-sm-offset-0">								
+										<input type="text" class="form-control" name="credencial" placeholder="Credencial" id="credencial" readonly="" title="credencial" value="<?php echo $this->_persona[0]['credencial'] ?>">											
+							</div>
+						
+							<div class="col-sm-3 col-sm-offset-0">						
+										<input type="text" class="form-control" name="nombre_1" placeholder="Primer Nombre" title="nombre_1" readonly="" value="<?php echo $this->_persona[0]['nombre_1'] ?>">
+							</div>
+						
+							<div class="col-sm-3 col-sm-offset-0">							
+										<input type="text" class="form-control" name="nombre_2" placeholder=" Segundo Nombre" title="nombre_2" readonly="" value="<?php echo $this->_persona[0]['nombre_2'] ?>">
+							</div>							
+
+					</div>				
+					
+					<div class="form-group">
+
+						<label class="col-sm-3 col-md-offset-0">Primer Apellido</label>
+						<label class="col-sm-2 col-md-offset-0">Segundo Apellido</label>						
+						<label class="col-sm-1 col-md-offset-1">Cargo</label>						
+						<label class="col-sm-2 col-md-offset-2">Jerarquia</label>
+
+					</div>
+
+										
+							    
+
+					<div class="form-group">
+
+						<div class="col-sm-3 col-md-offset-0">
+										<input type="text" class="form-control" name="apellido_1" placeholder="Primer apellido" title="apellido_1" readonly="" value="<?php echo $this->_persona[0]['apellido_1'] ?>">	
+						</div>
+					
+						<div class="col-sm-3 col-md-offset-0">						
+										<input type="text" class="form-control" name="apellido_2" placeholder=" Segundo apellido" title="apellido_2" readonly="" value="<?php echo $this->_persona[0]['apellido_2'] ?>">
+						</div>
+
+						<div class="col-sm-3 col-md-offset-0">
+										<input type="text" class="form-control" name="cargo" placeholder="cargo" title="cargo" readonly="" value="<?php echo $this->_persona[0]['cargo'] ?>">
+						</div>
+					
+						<div class="col-sm-3 col-md-offset-0">
+										<select class="form-control" disabled="" name="jerarquia" id="jerarquia">
+											<option ><?php echo $this->_persona[0]['jerarquia'] ?></option>
+										</select>
+						</div>							
+					</div>					
+
+					<div class="form-group">
+					
+						<label class="col-sm-5">correo electronico</label>
+
+					</div>
+
+					<div class="form-group">
+
+						<div class="col-sm-3">
+										<input type="text" class="form-control" name="correo" placeholder="Ingrese un correo" title="correo" readonly="" value="<?php echo $this->_persona[0]['correo'] ?>">
+						</div>
+
+					</div>
+
+		 			</div>
+		 		</div>
+
+					<div class= "panel panel-primary" >
+						<div class= "panel-heading" >
+							<h3 class= "panel-title fa fa"> Despacho</h3>
+						</div>
+							<div class="panel-body">
+								<div class="form-group">
+									<label class="control-label col-sm-5">Direccion</label>
+									<div class="col-sm-4">
+										<select class="form-control" disabled="" name="areac" id="areac"  >
+											<option><?php echo $this->_persona[0]['areac'] ?></option>
+										</select>
+									</div>
+								</div>
+							</div>
+					</div>
+
+
+
+		 		<div class= "panel panel-primary" >
+		 			<div class= "panel-heading" >
+		 				<h3 class= "panel-title fa fa-users">Usuario</h3>
+		 			</div>
+		 					
+		 			<div class="panel-body">
+
+					<div class="form-group">
+
+
+						    <div class="col-sm-3 col-sm-offset-0" class="" id="usuario2">
+						         <strong><p id="usuario1"></p></strong>
+				        	</div>
+
+					        <div class="col-sm-4 col-sm-offset-1">
+					            <strong><p id="texto"></p></strong>
+					        </div>	
+
+				            <div class="col-sm-2 col-md-offset-0">
+				               <strong><p id="val"></p></strong>
+				            </div>
+				            						        	
+					</div>
+
+					<div class="form-group">
+
+						<label class="col-sm-2 col-sm-offset-0">Nombre de Usuario</label>
+						<label class="col-sm-2 col-sm-offset-2">Clave</label>
+						<label class="col-sm-3 col-sm-offset-2">Repita su Clave</label>
+				            					        	
+					</div>
+
+					<div class="form-group">
+							
+							<div class="col-sm-4 col-sm-offset-0">
+									<input type="text" class="form-control" name="usuario" placeholder="Ingrese aca su usuario" id="usuario" title="usuario">
+							</div>
+							<div class="col-sm-4 col-sm-offset-0">
+									<input type="password" class="form-control" name="clave" placeholder="ingrese una clave" title="clave" id="clave" required="8">	
+							</div>
+						
+							
+							<div class="col-sm-4 col-sm-offset-0">
+									<input type="password" class="form-control" name="clave1" placeholder="ingrese una clave" title="clave1" id="clave1" required="8">	
+							</div>							
+					</div>							
+
+					<div class="form-group">
+						
+						<label class="col-sm-2 col-sm-offset-0">pregunta</label>
+						<label class="col-sm-2 col-sm-offset-2">respuesta</label>
+						<label class="col-sm-3 col-sm-offset-2">Perfil</label>
+				            					        	
+					</div>
+
+					<div class="form-group">
+							
+							<div class="col-sm-4 col-sm-offset-0">
+                				<input type="text"  class="form-control" name="pregunta" placeholder="Ingrese su pregunta" title="pregunta" id="pregunta" >
+							</div>
+							<div class="col-sm-4 col-sm-offset-0">
+                				<input type="text" class="form-control" name="respuesta" placeholder="Ingrese su respuesta" title="respuesta" id="respuesta" >	
+							</div>
+						
+							
+							<div class="col-sm-4 col-sm-offset-0">
+								<select  class="form-control " name="perfil" id="perfil" class="">
+
+									<option>Seleccione...</option>
+								</select>
+							</div>							
+					</div>	
+
+
+					<div class="col-sm-offset-6">
+						<input type="submit" value="Registrar" class="btn btn-primary" onclick=" return confirm('¿Estas seguro de realizar este registro?');">
+					</div>
+					
+
+		 			</div>
+		 		</div>
+			</div>
+		</form>
+	</div>
+</div>
+</header>
+</body>
