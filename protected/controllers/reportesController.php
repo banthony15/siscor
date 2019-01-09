@@ -13,7 +13,7 @@
 		//Objeto donde almacenamos todas las funciones de PersonsModel.php
 		$this->_view->setJS(array('js/requerimientos/requerimientos'));
 		$this->_view->setJS(array('js/requerimientoval'));
-
+		
 		}
 		
 		function index(){

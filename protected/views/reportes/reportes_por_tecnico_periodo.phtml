@@ -23,55 +23,128 @@
     </li>
 </ol>
 
-     <div id="page-wrapper">
-        <div class="container">
-            <div class="col-md-12 col-md-offset-0" >
-                <div class= "panel panel-primary">
+<body>
+    <header class="header">
+        <div class="row">
+            <div class="col-md-6 col-sm-offset-3" >
+                <div class= "panel panel-primary" >
+                    <div class= "panel-heading" >
+                        <h3 class= "panel-title fa fa col-md-offset-5">Generar reporte</h3>
+                    </div>
+
+                        <br><br>
+
+                    <div class="form-group">
+
+                        <label class="col-sm-4 col-sm-offset-3">Periodo: </label>
+                        <label class="col-sm-5 col-sm-offset-0">Status: </label>
+
+                                                            
+                    </div>
+
                     <div class="panel-body">
-                        <div class="dataTable_wrapper">
-                            <form action="<?php  echo BASE_URL;?>requerimiento/rperiodotecanalist" method="post">
-                                <table class="table table-striped table-bordered table-hover" id="dataTables">
-                                        <thead>
-                                            <tr>
-                                                
-                                                <th>Año: </th>
-                                                <th>Total:</th>
-                                                <th>Accion</th>
-                                
+                        <div class="form-group">
+                            <div class="col-xs-4 col-md-offset-2">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+                                    <input onclick="validar()" type="text" id="reportes1" name="reportes1" placeholder="Ej. 11/2018"   class="form-control">
 
-                                            </tr>
-                                        </thead>                                 
-                                        <tbody>
-                                        <?php foreach ($this->_lista as $aset): ?>
-                                    <tr class="info">    
-                                        
-                                       
-                                        <td align="center"><?php echo $aset['periodo'];?></td>
-                                        <td align="center"><?php echo $aset['total'];?></td>
-
-                                        <td align="center">
-
-                                            <a href="<?php echo BASE_URL."reportes/reportes_tecnico_caso_abierto/". $aset['periodo'] ; ?>">
-                                                <span title="Reportes por casos abiertos" class="fa fa-battery-half"></span>                                  
-                                            </a>
-                                            &nbsp;
-                                            <a href="<?php echo BASE_URL."reportes/reportes_tecnico_caso_cerrado/". $aset['periodo'] ; ?>">
-                                                <span title="Reporte por mes por casos cerrados" class="fa fa-battery-full"></span>                                  
-                                            </a>                                            
-
-                           </td>                                
-
-                                    </tr>
-                                <?php endforeach ?>
-                                        </tbody>
-                                </table>
-                            </form>
-                          </div>
+                                </div>                                              
+                            </div>
+                        <div class="col-sm-4 col-md-offset-0">
+                            <div class="input-group ">
+                                <select class="form-control"  name="status_del_caso" id="status_del_caso">
+                                    
+                                </select>     
+                            </div>                                           
                         </div>
+
+                        </div>
+                     
+
+
+
+                        <br><br>
+
+                    <div class="form-group">
+                        <div class="col-sm-3 col-md-offset-4">
+                            <div class="input-group col-md-offset-4">
+                                <input type="submit" name="boton" id="boton" onclick="location.href='javascript:pdf()';" value="Ver reporte" class="btn btn-primary" disabled>
+
+                            </div>                                           
+                        </div>
+                       
+                    </div>
+                    
+                    <br><br><br>
                     </div>
                 </div>
             </div>
-        </div>      
+        </div>
+    </header>
+</body> 
 
-    <br><br>
-    <br><br>
+<?php foreach ($this->_lista as $sistemas): ?>
+<?php endforeach ?>
+  
+<style>
+.ui-datepicker-calendar {
+    display: none;
+    }
+</style>
+
+<!-- <form>
+  First name: <input onkeyup="validar()" class="inputFormu" type="text" name="FirstName" ><br>
+  Last name: <input onkeyup="validar()" class="inputFormu" type="text" name="LastName" ><br>
+  <input id="boton"  type="submit" value="Submit" disabled>
+</form> -->
+
+<script type="text/javascript">
+    
+    function validar(){
+  var validado = true;
+  elementos = document.getElementsByClassName("form-control");
+  for(i=0;i<elementos.length;i++){
+    if(elementos[i].value == null){
+    validado = false
+    }
+  }
+  if(validado){
+  document.getElementById("boton").disabled = false;
+  
+  }else{
+     document.getElementById("boton").disabled = true;
+  //Salta un alert cada vez que escribes y hay un campo vacio
+  //alert("Hay campos vacios")   
+  }
+}
+
+</script>
+
+<script language="javascript">
+function pdf(){
+
+var reportes1 = document.getElementById('reportes1').value;
+var status_del_caso = document.getElementById('status_del_caso').value;
+
+var dir = "<?php echo BASE_URL."reportes/reporte_aserv_detallado_tecnico/";?>";
+var periodo = "<?php echo $sistemas['periodo'];?>";
+var igual = dir + reportes1 + "/" + status_del_caso;
+
+// var meses = document.getElementById('meses').value;
+// var periodo = document.getElementById('periodo').value;
+// var dir = "<?php echo BASE_URL."reportes/reportes_pdf_sistemas_detallados/".$sistemas['periodo'];?>";
+// var igual = dir + "/" + meses + "/" + periodo;
+// dir += document.getElementById('separador').value;
+// dir += document.getElementById('periodo').value;
+
+    // var nameInput = document.getElementById("new-name").value; 
+    // var emailInput = document.getElementById("new-email").value; 
+    // var noInput = document.getElementById("new-number").value; 
+    // var zipInput = document.getElementById("new-zip").value; 
+
+    // var resultInput  = nameInput + " " + emailInput + " " + noInput +  " " + zipInput ;
+
+window.location.href=igual;
+}
+</script>

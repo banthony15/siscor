@@ -7,8 +7,9 @@
 	define('DEFAULT_CONTROLLER', 'index');
 	define('DEFAULT_METHOD', 'index');
 	
-	//define('BASE_URL', 'http://localhost/siscor/'); //Guarda la direccion BASE de nuestro sistema.
-	define('BASE_URL', 'http://10.3.130.27/siscor_p/'); //Guarda la direccion BASE de nuestro sistema.
+	//define('BASE_URL', 'http://localhost/siscor_p/'); //Guarda la direccion BASE de nuestro sistema.
+	//define('BASE_URL', 'http://10.3.130.27/siscor_p/'); //Guarda la direccion BASE de nuestro sistema.
+	define('BASE_URL', 'http://localhost/siscor_p/'); //Guarda la direccion BASE de nuestro sistema.
 	define('PUBLIC_URL', BASE_URL . 'public/'); //Guarda la direccion de nuestro directorio publico
 
 	define('SIZE_PAPER', 'LEGAL');

@@ -3,6 +3,8 @@ LoadReferencia('tipo_de_solicitud');
 LoadReferencia('tipo_de_requerimiento');
 LoadReferencia('status');
 LoadReferencia('cod_area');
+LoadReferencia('status_del_caso');
+LoadReferencia('status_equipo');
 
 Loadasigsistema('resultado');
 

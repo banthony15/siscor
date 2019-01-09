@@ -499,7 +499,7 @@
 
 			$celda->Ln(10);
 			$celda->Cell(15);
-			$celda->Cell(165, 5, "Descripcion:",1,0,'C',1);
+			$celda->Cell(165, 5, utf8_decode("Descripción:"),1,0,'C',1);
 
 			$celda->Ln();
 
@@ -528,7 +528,7 @@
 			}		
 
 //$celda->SetY(265);
-			$celda->Ln(35);
+			$celda->Ln();
 			$celda->Cell(15);
 			$celda->Cell(165, 5, "Observaciones:",1,0,'C',1);	
 
@@ -543,19 +543,19 @@
 			
 
 
-			$celda->SetY(265);
-			// Arial italic 8
-			//$celda->SetFont('Arial','I',8);
-			// Número de página
-			//$celda->Cell(0,10,''.$celda->PageNo(),0,0,'C');
+			// $celda->SetY(265);
+			// // Arial italic 8
+			// //$celda->SetFont('Arial','I',8);
+			// // Número de página
+			// //$celda->Cell(0,10,''.$celda->PageNo(),0,0,'C');
 
-			$celda->Ln(2);
-			$celda->Cell(20);
-			$celda->Cell(40, 7, "Firma del Analista:",0,0,'C');	
-			$celda->Line(30 , 260 , 70, 260);  //Horizontal
-			$celda->Cell(180, 7, "Firma del Solicitante:",0,0,'C');
-			$celda->Line(140 , 260 , 180, 260);  //Horizontal
-			$celda->Ln(10);
+			// $celda->Ln(2);
+			// $celda->Cell(20);
+			// $celda->Cell(40, 7, "Firma del Analista:",0,0,'C');	
+			// $celda->Line(30 , 260 , 70, 260);  //Horizontal
+			// $celda->Cell(180, 7, "Firma del Solicitante:",0,0,'C');
+			// $celda->Line(140 , 260 , 180, 260);  //Horizontal
+			// $celda->Ln(10);
 
 			$celda->output();
 		}		
