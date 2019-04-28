@@ -361,7 +361,7 @@ function soporte($persona, $soporte, $soporte_persona, $soporte_analista, $sopor
 
 		function requerimientosmicro(){
 
-			$this->_query= "SELECT CONCAT( REPEAT( '0', 4 - LENGTH(m.id) ) , m.id) as id, m_a.persona_id, fecha_micro, fecha_entrega, p_s.credencial, CONCAT(p_a.nombre_1, ' ', p_a.apellido_1) AS analista, CONCAT(p_t.nombre_1, ' ', p_t.apellido_1) as tecnico, CONCAT(p_s.nombre_1, ' ', p_s.apellido_1) as solicitante, descripcion_depen, ref_status_equipos.referencia as status_equipo FROM micro_tickets as m
+			$this->_query= "SELECT CONCAT( REPEAT( '0', 4 - LENGTH(m.id) ) , m.id) as id, m_a.persona_id, fecha_micro, fecha_entrega, p_s.cedula, CONCAT(p_a.nombre_1, ' ', p_a.apellido_1) AS analista, CONCAT(p_t.nombre_1, ' ', p_t.apellido_1) as tecnico, CONCAT(p_s.nombre_1, ' ', p_s.apellido_1) as solicitante, descripcion_depen, ref_status_equipos.referencia as status_equipo FROM micro_tickets as m
 							inner join referencia as ref_status_equipos on ref_status_equipos.id = status_equipo_id
 							
 							inner join micro_analista as m_a on m_a.micro_tickets_id = m.id
@@ -384,7 +384,7 @@ function soporte($persona, $soporte, $soporte_persona, $soporte_analista, $sopor
 
 			$session=Session::get('persona_id');
 
-			$this->_query= "SELECT CONCAT( REPEAT( '0', 4 - LENGTH(m.id) ) , m.id) as id, m_a.persona_id, fecha_micro, fecha_entrega, p_a.credencial, CONCAT(p_a.nombre_1, ' ', p_a.apellido_1) AS analista, CONCAT(p_t.nombre_1, ' ', p_t.apellido_1) as tecnico, CONCAT(p_s.nombre_1, ' ', p_s.apellido_1) as solicitante, d_s.descripcion_depen, ref_status_equipos.referencia as status_equipo FROM micro_tickets as m
+			$this->_query= "SELECT CONCAT( REPEAT( '0', 4 - LENGTH(m.id) ) , m.id) as id, m_a.persona_id, fecha_micro, fecha_entrega, p_s.cedula, CONCAT(p_a.nombre_1, ' ', p_a.apellido_1) AS analista, CONCAT(p_t.nombre_1, ' ', p_t.apellido_1) as tecnico, CONCAT(p_s.nombre_1, ' ', p_s.apellido_1) as solicitante, d_s.descripcion_depen, ref_status_equipos.referencia as status_equipo FROM micro_tickets as m
 
 							inner join referencia as ref_status_equipos on ref_status_equipos.id = status_equipo_id
                             
@@ -464,7 +464,7 @@ function soporte($persona, $soporte, $soporte_persona, $soporte_analista, $sopor
 		function soporteview(){
 
 
-		$this->_query="SELECT sp.id,  p_s.credencial, CONCAT(p_a.nombre_1, ' ', p_a.apellido_1) AS analista, CONCAT(p_t.nombre_1, ' ', p_t.apellido_1) as tecnico, CONCAT(p_s.nombre_1, ' ', p_s.apellido_1) as solicitante, ref_tdrt.referencia as tipo_de_requerimiento, ref_cod_area.referencia as codigo_area, d_s.descripcion_depen, numero_tel, fecha_inicio, fecha_culminacion , ref_status.referencia as status_caso FROM soporte as sp
+		$this->_query="SELECT sp.id,  p_s.cedula, CONCAT(p_a.nombre_1, ' ', p_a.apellido_1) AS analista, CONCAT(p_t.nombre_1, ' ', p_t.apellido_1) as tecnico, CONCAT(p_s.nombre_1, ' ', p_s.apellido_1) as solicitante, ref_tdrt.referencia as tipo_de_requerimiento, ref_cod_area.referencia as codigo_area, d_s.descripcion_depen, numero_tel, fecha_inicio, fecha_culminacion , ref_status.referencia as status_caso FROM soporte as sp
 
 		inner join referencia as ref_tdrt on ref_tdrt.id = tipo_de_rt_id
 		inner join referencia as ref_cod_area on ref_cod_area.id = cod_area_id
@@ -489,7 +489,7 @@ function soporte($persona, $soporte, $soporte_persona, $soporte_analista, $sopor
 
 		$session=Session::get('persona_id');
 
-		$this->_query="SELECT sp.id,  p_s.credencial, CONCAT(p_a.nombre_1, ' ', p_a.apellido_1) AS analista, CONCAT(p_t.nombre_1, ' ', p_t.apellido_1) as tecnico, CONCAT(p_s.nombre_1, ' ', p_s.apellido_1) as solicitante, ref_tdrt.referencia as tipo_de_requerimiento, ref_cod_area.referencia as codigo_area, d_s.descripcion_depen, numero_tel, fecha_inicio, fecha_culminacion , ref_status.referencia as status_caso FROM soporte as sp
+		$this->_query="SELECT sp.id,  p_s.cedula, CONCAT(p_a.nombre_1, ' ', p_a.apellido_1) AS analista, CONCAT(p_t.nombre_1, ' ', p_t.apellido_1) as tecnico, CONCAT(p_s.nombre_1, ' ', p_s.apellido_1) as solicitante, ref_tdrt.referencia as tipo_de_requerimiento, ref_cod_area.referencia as codigo_area, d_s.descripcion_depen, numero_tel, fecha_inicio, fecha_culminacion , ref_status.referencia as status_caso FROM soporte as sp
 
 		inner join referencia as ref_tdrt on ref_tdrt.id = tipo_de_rt_id
 		inner join referencia as ref_cod_area on ref_cod_area.id = cod_area_id
@@ -525,6 +525,7 @@ function soporte($persona, $soporte, $soporte_persona, $soporte_analista, $sopor
 				inner join referencia as ref_stdcaso on ref_stdcaso.id = status_del_caso_id
 				inner JOIN soporte_persona as s_p on s_p.soporte_id = sp.id
 				inner join persona as p_s on p_s.id = s_p.persona_id
+				where sp.id = $id
 				";
 			
 			return $this->Read();

@@ -41,15 +41,15 @@
 		function reportes_pdf_sistemas_detallados($mes,$periodo){
 			// echo $mes.' '.$periodo;die;	
 			Session::accessRole(array('Super Usuario Sistemas','Usuario Sistemas'));
-			require("C:/xampp/htdocs/siscor_p/libs/fpdf/fpdf.php");
+			require("C:/xampp/htdocs/siger/libs/fpdf/fpdf.php");
 			$requerimiento = $this->_reportes->reportes_pdf_sistemas_detallados($mes, $periodo);
 			$total = $this->_reportes->total_reportes_pdf_sistemas($mes, $periodo);
 
 			$celda= new FPDF();
 			$celda->Addpage();
 			$celda->SetFillColor(150, 150, 150);
-			$celda->Image('C:\xampp\htdocs\siscor_p\libs\fpdf\tutorial\avatar6.png',165,8,28);
-			$celda->Image('C:\xampp\htdocs\siscor_p\libs\fpdf\tutorial\mep.png',12,10,28);
+			$celda->Image('C:\xampp\htdocs\siger\libs\fpdf\tutorial\avatar6.png',165,8,28);
+			$celda->Image('C:\xampp\htdocs\siger\libs\fpdf\tutorial\mep.png',12,10,28);
 			$celda->SetFont('Arial','B',07);
 			$celda->Cell(82);
 			$celda->Cell(30,10,'REPUBLICA BOLIVARIANA DE VENEZUELA',2,0,'C');
@@ -148,15 +148,15 @@
 		function pdf_reporte_supervisor_sistemas($mes,$periodo, $status){
 			// echo $mes.' '.$periodo;die;	
 			Session::accessRole(array('Super Usuario Sistemas','Usuario Sistemas'));
-			require("C:/xampp/htdocs/siscor_p/libs/fpdf/fpdf.php");
+			require("C:/xampp/htdocs/siger/libs/fpdf/fpdf.php");
 			$total = $this->_reportes->pdf_total_sistemas_supervisor($mes, $periodo, $status);
 			$requerimiento = $this->_reportes->pdf_reporte_supervisor_sistemas($mes, $periodo, $status);
 
 			$celda= new FPDF();
 			$celda->Addpage();
 			$celda->SetFillColor(150, 150, 150);
-			$celda->Image('C:\xampp\htdocs\siscor_p\libs\fpdf\tutorial\avatar6.png',165,8,28);
-			$celda->Image('C:\xampp\htdocs\siscor_p\libs\fpdf\tutorial\mep.png',12,10,28);
+			$celda->Image('C:\xampp\htdocs\siger\libs\fpdf\tutorial\avatar6.png',165,8,28);
+			$celda->Image('C:\xampp\htdocs\siger\libs\fpdf\tutorial\mep.png',12,10,28);
 			$celda->SetFont('Arial','B',07);
 			$celda->Cell(82);
 			$celda->Cell(30,10,'REPUBLICA BOLIVARIANA DE VENEZUELA',2,0,'C');
@@ -255,15 +255,15 @@
 
 		function rdetalladodespacho($mes,$periodo){
 			// echo $mes.' '.$periodo;die;	
-			require("C:/xampp/htdocs/siscor_p/libs/fpdf/fpdf.php");
+			require("C:/xampp/htdocs/siger/libs/fpdf/fpdf.php");
 			$requerimiento = $this->_reportes->rdetalladodesp($mes, $periodo);
 			$total = $this->_reportes->totalrdetalladodesp($mes, $periodo);
 
 			$celda= new FPDF();
 			$celda->Addpage();
 			$celda->SetFillColor(150, 150, 150);
-			$celda->Image('C:\xampp\htdocs\siscor_p\libs\fpdf\tutorial\avatar6.png',165,8,28);
-			$celda->Image('C:\xampp\htdocs\siscor_p\libs\fpdf\tutorial\mep.png',12,10,28);
+			$celda->Image('C:\xampp\htdocs\siger\libs\fpdf\tutorial\avatar6.png',165,8,28);
+			$celda->Image('C:\xampp\htdocs\siger\libs\fpdf\tutorial\mep.png',12,10,28);
 			$celda->SetFont('Arial','B',07);
 			$celda->Cell(82);
 			$celda->Cell(30,10,'REPUBLICA BOLIVARIANA DE VENEZUELA',2,0,'C');
@@ -363,15 +363,15 @@
 		function rdetalladotec($mes,$periodo, $status){
 			// echo $mes.' '.$periodo;die;	
 			Session::accessRole(array('Super Usuario Telematica','Usuario Telematica'));
-			require("C:/xampp/htdocs/SISCOR_P/libs/fpdf/fpdf.php");
+			require("C:/xampp/htdocs/siger/libs/fpdf/fpdf.php");
 			$total = $this->_reportes->pdftotaltec($mes, $periodo, $status);
 			$requerimiento = $this->_reportes->pdfreportedetallado($mes, $periodo, $status);
 
 			$celda= new FPDF();
 			$celda->Addpage();
 			$celda->SetFillColor(150, 150, 150);
-			$celda->Image('C:\xampp\htdocs\SISCOR_P\libs\fpdf\tutorial\avatar6.png',165,8,28);
-			$celda->Image('C:\xampp\htdocs\SISCOR_P\libs\fpdf\tutorial\mep.png',12,10,28);
+			$celda->Image('C:\xampp\htdocs\siger\libs\fpdf\tutorial\avatar6.png',165,8,28);
+			$celda->Image('C:\xampp\htdocs\siger\libs\fpdf\tutorial\mep.png',12,10,28);
 			$celda->SetFont('Arial','B',07);
 			$celda->Cell(82);
 			$celda->Cell(30,10,'REPUBLICA BOLIVARIANA DE VENEZUELA',2,0,'C');
@@ -472,15 +472,15 @@
 
 		function reportes_aset_tipo_eq_detallado($mes,$periodo){
 			// echo $mes.' '.$periodo;die;	
-			require("C:/xampp/htdocs/siscor_p/libs/fpdf/fpdf.php");
+			require("C:/xampp/htdocs/siger/libs/fpdf/fpdf.php");
 			$requerimiento = $this->_reportes->reportes_aset_tipo_eq_detallado($mes, $periodo);
 			$total = $this->_reportes->r_total_eq_detallado($mes, $periodo);
 
 			$celda= new FPDF();
 			$celda->Addpage();
 			$celda->SetFillColor(150, 150, 150);
-			$celda->Image('C:\xampp\htdocs\siscor_p\libs\fpdf\tutorial\avatar6.png',165,8,28);
-			$celda->Image('C:\xampp\htdocs\siscor_p\libs\fpdf\tutorial\mep.png',12,10,28);
+			$celda->Image('C:\xampp\htdocs\siger\libs\fpdf\tutorial\avatar6.png',165,8,28);
+			$celda->Image('C:\xampp\htdocs\siger\libs\fpdf\tutorial\mep.png',12,10,28);
 			$celda->SetFont('Arial','B',07);
 			$celda->Cell(82);
 			$celda->Cell(30,10,'REPUBLICA BOLIVARIANA DE VENEZUELA',2,0,'C');
@@ -567,15 +567,15 @@
 		function reportes_aserv_detallado($mes,$periodo){
 			// echo $mes.' '.$periodo;die;	
 			Session::accessRole(array('Super Usuario Telematica','Usuario Telematica'));
-			require("C:/xampp/htdocs/siscor_p/libs/fpdf/fpdf.php");
+			require("C:/xampp/htdocs/siger/libs/fpdf/fpdf.php");
 			$requerimiento = $this->_reportes->reportes_detallado_p_despacho($mes, $periodo);
 			$total = $this->_reportes->total_reportes_detallado_p_desp($mes, $periodo);
 
 			$celda= new FPDF();
 			$celda->Addpage();
 			$celda->SetFillColor(150, 150, 150);
-			$celda->Image('C:\xampp\htdocs\siscor_p\libs\fpdf\tutorial\avatar6.png',165,8,28);
-			$celda->Image('C:\xampp\htdocs\siscor_p\libs\fpdf\tutorial\mep.png',12,10,28);
+			$celda->Image('C:\xampp\htdocs\siger\libs\fpdf\tutorial\avatar6.png',165,8,28);
+			$celda->Image('C:\xampp\htdocs\siger\libs\fpdf\tutorial\mep.png',12,10,28);
 			$celda->SetFont('Arial','B',07);
 			$celda->Cell(82);
 			$celda->Cell(30,10,'REPUBLICA BOLIVARIANA DE VENEZUELA',2,0,'C');
@@ -670,15 +670,15 @@
 		function reporte_aserv_detallado_tecnico($mes,$periodo, $status){
 			// echo $mes.' '.$periodo;die;	
 			Session::accessRole(array('Super Usuario Telematica','Usuario Telematica'));
-			require("C:/xampp/htdocs/siscor_p/libs/fpdf/fpdf.php");
+			require("C:/xampp/htdocs/siger/libs/fpdf/fpdf.php");
 			$total = $this->_reportes->total_reporte_aserv_detallado_tecnico($mes, $periodo, $status);
 			$requerimiento = $this->_reportes->reporte_aserv_detallado_tecnico($mes, $periodo, $status);
 
 			$celda= new FPDF();
 			$celda->Addpage();
 			$celda->SetFillColor(150, 150, 150);
-			$celda->Image('C:\xampp\htdocs\siscor_p\libs\fpdf\tutorial\avatar6.png',165,8,28);
-			$celda->Image('C:\xampp\htdocs\siscor_p\libs\fpdf\tutorial\mep.png',12,10,28);
+			$celda->Image('C:\xampp\htdocs\siger\libs\fpdf\tutorial\avatar6.png',165,8,28);
+			$celda->Image('C:\xampp\htdocs\siger\libs\fpdf\tutorial\mep.png',12,10,28);
 			$celda->SetFont('Arial','B',07);
 			$celda->Cell(82);
 			$celda->Cell(30,10,'REPUBLICA BOLIVARIANA DE VENEZUELA',2,0,'C');
@@ -778,15 +778,15 @@
 
 		function reportes_aserv_tipo_req_detallado($mes,$periodo){
 			// echo $mes.' '.$periodo;die;	
-			require("C:/xampp/htdocs/siscor_p/libs/fpdf/fpdf.php");
+			require("C:/xampp/htdocs/siger/libs/fpdf/fpdf.php");
 			$requerimiento = $this->_reportes->reportes_aserv_tipo_req_detallado($mes, $periodo);
 			$total = $this->_reportes->r_total_req_detallado($mes, $periodo);
 
 			$celda= new FPDF();
 			$celda->Addpage();
 			$celda->SetFillColor(150, 150, 150);
-			$celda->Image('C:\xampp\htdocs\siscor_p\libs\fpdf\tutorial\avatar6.png',165,8,28);
-			$celda->Image('C:\xampp\htdocs\siscor_p\libs\fpdf\tutorial\mep.png',12,10,28);
+			$celda->Image('C:\xampp\htdocs\siger\libs\fpdf\tutorial\avatar6.png',165,8,28);
+			$celda->Image('C:\xampp\htdocs\siger\libs\fpdf\tutorial\mep.png',12,10,28);
 			$celda->SetFont('Arial','B',07);
 			$celda->Cell(82);
 			$celda->Cell(30,10,'REPUBLICA BOLIVARIANA DE VENEZUELA',2,0,'C');

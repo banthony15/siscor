@@ -28,24 +28,24 @@ $('#valreque').bootstrapValidator({
 			 } 
 		 },
 
-	 	credencial: { // campo cedula
+	 	// credencial: { // campo credencial
 
-			 validators: {
-			 	 notEmpty: { // No puede ser vacio
-					 message: 'La credencial es requerida'
-				 },
-				 regexp: { // Solo estos caracteres pueden ser usados
-					 regexp: /^[1234567890]+$/,
-					 message: 'El Formato de la credencia es incorrecto'
-				 },
-				 between: { //rango entre 1 y 40 millones
-				 				min:1,
-				 			   	max: 900000,
-				 	 message: 'El Rango de la credencial es incorrecto'
+			//  validators: {
+			//  	 notEmpty: { // No puede ser vacio
+			// 		 message: 'La credencial es requerida'
+			// 	 },
+			// 	 regexp: { // Solo estos caracteres pueden ser usados
+			// 		 regexp: /^[1234567890]+$/,
+			// 		 message: 'El Formato de la credencia es incorrecto'
+			// 	 },
+			// 	 between: { //rango entre 1 y 40 millones
+			// 	 				min:1,
+			// 	 			   	max: 900000,
+			// 	 	 message: 'El Rango de la credencial es incorrecto'
 				 	 	
-				 }
-			 } 
-		 },
+			// 	 }
+			//  } 
+		 // },
 
 		 nombre_1: {
 			 validators: {

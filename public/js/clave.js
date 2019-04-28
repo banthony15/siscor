@@ -107,7 +107,7 @@ $(document).ready(function ()
 		}
 		else
 		{
-			$("#val").text("las claves no coinciden coinciden"); 
+			$("#val").text("las claves no coinciden"); 
 		 	$("#val").css('color','#ff0040');
 		 	$("#evento").click(function(event) {
 		 		event.preventDefault();	

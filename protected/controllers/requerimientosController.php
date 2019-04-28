@@ -291,7 +291,7 @@
 			function pdf($id){
 
 			Session::accessRole(array('Super Usuario Sistemas','Usuario Sistemas'));
-			require("C:/xampp/htdocs/siscor_p/libs/fpdf/fpdf.php");
+			require("C:/xampp/htdocs/siger/libs/fpdf/fpdf.php");
 			$d=40;
 			$e=82.5;
 
@@ -301,8 +301,8 @@
 
 			$celda->Addpage();
 
-			$celda->Image('C:\xampp\htdocs\siscor_p\libs\fpdf\tutorial\avatar6.png',165,8,24);
-			$celda->Image('C:\xampp\htdocs\siscor_p\libs\fpdf\tutorial\mep.png',12,10,24);
+			$celda->Image('C:\xampp\htdocs\siger\libs\fpdf\tutorial\avatar6.png',165,8,24);
+			$celda->Image('C:\xampp\htdocs\siger\libs\fpdf\tutorial\mep.png',12,10,24);
 			$celda->SetFont('Arial','B', 07);
 			$celda->Cell(82);
 			$celda->Cell(30,10, utf8_decode('REPÚBLICA BOLIVARIANA DE VENEZUELA'),2,0,'C');

@@ -560,6 +560,7 @@
 			$this->_ticket->upsoporte($oporte);
 			$this->_view->redirect('telematica/mis_req_aserv');
 			}else{
+				
 			$micro_tickets = $this->_ticket->soportview($id);
 			$this->_view->_micro = $micro_tickets;
 			$this->_view->render('updatesoporte', 'telematica');
@@ -606,7 +607,7 @@
 			function pdfentrada($id){
 
 			Session::accessRole(array('Super Usuario Telematica', 'Usuario Telematica'));
-			require("C:/xampp/htdocs/siscor_p/libs/fpdf/fpdf.php");
+			require("C:/xampp/htdocs/siger/libs/fpdf/fpdf.php");
 			$d=40;
 			$e=80;
 
@@ -615,8 +616,8 @@
 			$celda->Addpage();
 			$celda->SetFillColor(150, 150, 150);
 
-			$celda->Image('C:\xampp\htdocs\siscor_p\libs\fpdf\tutorial\avatar6.png',165,8,28);
-			$celda->Image('C:\xampp\htdocs\siscor_p\libs\fpdf\tutorial\mep.png',12,10,28);
+			$celda->Image('C:\xampp\htdocs\siger\libs\fpdf\tutorial\avatar6.png',165,8,28);
+			$celda->Image('C:\xampp\htdocs\siger\libs\fpdf\tutorial\mep.png',12,10,28);
 			$celda->SetFont('Arial','B',07);
 			$celda->Cell(82);
 			$celda->Cell(30,10,'REPUBLICA BOLIVARIANA DE VENEZUELA',2,0,'C');
@@ -932,7 +933,7 @@
 		function pdfsalida($id){
 
 		Session::accessRole(array('Super Usuario Telematica', 'Usuario Telematica'));
-			require("C:/xampp/htdocs/siscor_p/libs/fpdf/fpdf.php");
+			require("C:/xampp/htdocs/siger/libs/fpdf/fpdf.php");
 			$d=40;
 			$e=80;
 
@@ -941,8 +942,8 @@
 			$celda->Addpage();
 			$celda->SetFillColor(150, 150, 150);
 
-			$celda->Image('C:\xampp\htdocs\siscor_p\libs\fpdf\tutorial\avatar6.png',165,8,28);
-			$celda->Image('C:\xampp\htdocs\siscor_p\libs\fpdf\tutorial\mep.png',12,10,28);
+			$celda->Image('C:\xampp\htdocs\siger\libs\fpdf\tutorial\avatar6.png',165,8,28);
+			$celda->Image('C:\xampp\htdocs\siger\libs\fpdf\tutorial\mep.png',12,10,28);
 			$celda->SetFont('Arial','B',07);
 			$celda->Cell(82);
 			$celda->Cell(30,10,'REPUBLICA BOLIVARIANA DE VENEZUELA',2,0,'C');
@@ -1205,7 +1206,7 @@
 		function pdfsoporte($id){
 
 		Session::accessRole(array('Super Usuario Telematica', 'Usuario Telematica'));
-			require("C:/xampp/htdocs/siscor_p/libs/fpdf/fpdf.php");
+			require("C:/xampp/htdocs/siger/libs/fpdf/fpdf.php");
 			$d=40;
 			$e=80;
 
@@ -1214,8 +1215,8 @@
 			$celda->Addpage();
 			$celda->SetFillColor(150, 150, 150);
 
-			$celda->Image('C:\xampp\htdocs\siscor_p\libs\fpdf\tutorial\avatar6.png',165,8,28);
-			$celda->Image('C:\xampp\htdocs\siscor_p\libs\fpdf\tutorial\mep.png',12,10,28);
+			$celda->Image('C:\xampp\htdocs\siger\libs\fpdf\tutorial\avatar6.png',165,8,28);
+			$celda->Image('C:\xampp\htdocs\siger\libs\fpdf\tutorial\mep.png',12,10,28);
 			$celda->SetFont('Arial','B',07);
 			$celda->Cell(82);
 			$celda->Cell(30,10,'REPUBLICA BOLIVARIANA DE VENEZUELA',2,0,'C');

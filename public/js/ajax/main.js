@@ -1,5 +1,5 @@
-var BASE_URL = "http://localhost/siscor_p/";
-//var BASE_URL = "http://10.3.130.27/siscor_p/";
+var BASE_URL = "http://localhost/siger/";
+//var BASE_URL = "http://10.3.130.27/siger/";
 
 
 
