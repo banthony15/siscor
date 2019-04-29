@@ -12,7 +12,7 @@
 		}
 
 
-		function insert($persona, $micro_tickets, $micro_persona, $micro_analista){
+		function insert($persona, $micro_tickets, $micro_persona, $log_insert_ticket){
 
 		$session=Session::get('persona_id');
 
@@ -39,7 +39,7 @@
 		$this->_db->prepare($this->_query)->execute();
 
 
-		$this->_query=" INSERT INTO `micro_analista`(`persona_id`, `micro_tickets_id`) VALUES		
+		$this->_query=" INSERT INTO `log_insert_ticket`(`persona_id`, `micro_tickets_id`) VALUES		
 		($session, $micro_ticketsid)";		
 		$this->_db->prepare($this->_query)->execute();
 
@@ -58,7 +58,7 @@
 
 		}
 
-function insertticket($micro_tickets, $micro_persona, $micro_analista, $micro_tecnico){
+function insertticket($micro_tickets, $micro_persona, $log_insert_ticket, $micro_tecnico){
 	try {
 
 		$this->_db->beginTransaction();
@@ -76,7 +76,7 @@ function insertticket($micro_tickets, $micro_persona, $micro_analista, $micro_te
 		($micro_ticketsid, :persona)";		
 		$this->_db->prepare($this->_query)->execute($micro_persona);
 
-		$this->_query=" INSERT INTO `micro_analista`(`persona_id`, `micro_tickets_id`) VALUES		
+		$this->_query=" INSERT INTO `log_insert_ticket`(`persona_id`, `micro_tickets_id`) VALUES		
 		($session, $micro_ticketsid)";		
 		$this->_db->prepare($this->_query)->execute();
 
@@ -95,7 +95,7 @@ function insertticket($micro_tickets, $micro_persona, $micro_analista, $micro_te
 		}
 
 
-	function nuevo_ticket_jn($persona, $micro_tickets,$micro_tecnico, $micro_persona, $micro_analista){
+	function nuevo_ticket_jn($persona, $micro_tickets,$micro_tecnico, $micro_persona, $log_insert_ticket){
 
 		$session=Session::get('persona_id');
 
@@ -126,7 +126,7 @@ function insertticket($micro_tickets, $micro_persona, $micro_analista, $micro_te
 		$this->_db->prepare($this->_query)->execute();
 
 
-		$this->_query=" INSERT INTO `micro_analista`(`persona_id`, `micro_tickets_id`) VALUES		
+		$this->_query=" INSERT INTO `log_insert_ticket`(`persona_id`, `micro_tickets_id`) VALUES		
 		($session, $micro_ticketsid)";		
 		$this->_db->prepare($this->_query)->execute();		
 
@@ -141,7 +141,7 @@ function insertticket($micro_tickets, $micro_persona, $micro_analista, $micro_te
 
 		}
 
-function insertticket_jn($micro_tickets, $micro_persona, $micro_analista, $micro_tecnico){
+function insertticket_jn($micro_tickets, $micro_persona, $log_insert_ticket, $micro_tecnico){
 	try {
 
 		$this->_db->beginTransaction();
@@ -163,7 +163,7 @@ function insertticket_jn($micro_tickets, $micro_persona, $micro_analista, $micro
 		($micro_ticketsid, :persona)";		
 		$this->_db->prepare($this->_query)->execute($micro_persona);
 
-		$this->_query=" INSERT INTO `micro_analista`(`persona_id`, `micro_tickets_id`) VALUES		
+		$this->_query=" INSERT INTO `log_insert_ticket`(`persona_id`, `micro_tickets_id`) VALUES		
 		($session, $micro_ticketsid)";		
 		$this->_db->prepare($this->_query)->execute();
 
@@ -176,7 +176,7 @@ function insertticket_jn($micro_tickets, $micro_persona, $micro_analista, $micro
 
 		}
 
-function insertrs_js($soporte, $soporte_persona, $soporte_analista, $soporte_tecnico){
+function insertrs_js($soporte, $soporte_persona, $log_insert_soporte, $soporte_tecnico){
 	try {
 
 		$this->_db->beginTransaction();
@@ -193,7 +193,7 @@ function insertrs_js($soporte, $soporte_persona, $soporte_analista, $soporte_tec
 		(:persona, $soporteid)";		
 		$this->_db->prepare($this->_query)->execute($soporte_persona);
 
-		$this->_query=" INSERT INTO `soporte_analista`(`persona_a_id`, `soporte_id`) VALUES		
+		$this->_query=" INSERT INTO `log_insert_soporte`(`persona_a_id`, `soporte_id`) VALUES		
 		($session, $soporteid)";		
 		$this->_db->prepare($this->_query)->execute();
 
@@ -210,7 +210,7 @@ function insertrs_js($soporte, $soporte_persona, $soporte_analista, $soporte_tec
 
 		}
 
-function nuevorsoport($soporte, $soporte_persona, $soporte_analista, $soporte_tecnico){
+function nuevorsoport($soporte, $soporte_persona, $log_insert_soporte, $soporte_tecnico){
 	try {
 
 		$this->_db->beginTransaction();
@@ -227,7 +227,7 @@ function nuevorsoport($soporte, $soporte_persona, $soporte_analista, $soporte_te
 		(:persona, $soporteid)";		
 		$this->_db->prepare($this->_query)->execute($soporte_persona);
 
-		$this->_query=" INSERT INTO `soporte_analista`(`persona_a_id`, `soporte_id`) VALUES		
+		$this->_query=" INSERT INTO `log_insert_soporte`(`persona_a_id`, `soporte_id`) VALUES		
 		($session, $soporteid)";		
 		$this->_db->prepare($this->_query)->execute();
 
@@ -244,7 +244,7 @@ function nuevorsoport($soporte, $soporte_persona, $soporte_analista, $soporte_te
 
 		}		
 
-function soporte_js($persona, $soporte, $soporte_persona, $soporte_analista, $soporte_tecnico){
+function soporte_js($persona, $soporte, $soporte_persona, $log_insert_soporte, $soporte_tecnico){
 		$session=Session::get('persona_id');
 
 	try {
@@ -267,7 +267,7 @@ function soporte_js($persona, $soporte, $soporte_persona, $soporte_analista, $so
 		($personaid, $soporteid)";		
 		$this->_db->prepare($this->_query)->execute();
 
-		$this->_query=" INSERT INTO `soporte_analista`(`persona_a_id`, `soporte_id`) VALUES		
+		$this->_query=" INSERT INTO `log_insert_soporte`(`persona_a_id`, `soporte_id`) VALUES		
 		($session, $soporteid)";		
 		$this->_db->prepare($this->_query)->execute();
 
@@ -284,7 +284,7 @@ function soporte_js($persona, $soporte, $soporte_persona, $soporte_analista, $so
 
 		}
 
-function soporte($persona, $soporte, $soporte_persona, $soporte_analista, $soporte_tecnico){
+function soporte($persona, $soporte, $soporte_persona, $log_insert_soporte, $soporte_tecnico){
 		$session=Session::get('persona_id');
 
 	try {
@@ -307,7 +307,7 @@ function soporte($persona, $soporte, $soporte_persona, $soporte_analista, $sopor
 		($personaid, $soporteid)";		
 		$this->_db->prepare($this->_query)->execute();
 
-		$this->_query=" INSERT INTO `soporte_analista`(`persona_a_id`, `soporte_id`) VALUES		
+		$this->_query=" INSERT INTO `log_insert_soporte`(`persona_a_id`, `soporte_id`) VALUES		
 		($session, $soporteid)";		
 		$this->_db->prepare($this->_query)->execute();
 
@@ -322,7 +322,64 @@ function soporte($persona, $soporte, $soporte_persona, $soporte_analista, $sopor
 			exit();
 	}		
 
-		}				
+		}
+
+function insert_log_update_soporte($log_update_soporte){
+	$session=Session::get('persona_id');
+	try {
+
+		$this->_db->beginTransaction();		
+		$this->_query="INSERT INTO `log_update_soporte`(`persona_id`, `soporte_id`) VALUES 
+		($session, :soporte_id)";		
+		$this->_db->prepare($this->_query)->execute($log_update_soporte);
+
+		
+			$this->_db->commit();		
+	} catch (Exception $e) {
+			$this->_db->rollBack();
+			echo "Error :: ".$e->getMessage();
+			exit();
+		}		
+
+}
+
+function control_delete_soporte($control_delete_soporte){
+	$session=Session::get('persona_id');
+	try {
+
+		$this->_db->beginTransaction();		
+		$this->_query="INSERT INTO `control_delete_soporte`(`persona_id`) VALUES 
+		($session)";		
+		$this->_db->prepare($this->_query)->execute($control_delete_soporte);
+
+		
+			$this->_db->commit();		
+	} catch (Exception $e) {
+			$this->_db->rollBack();
+			echo "Error :: ".$e->getMessage();
+			exit();
+		}		
+
+}
+
+function insert_log_update_ticket($log_update_ticket){
+	$session=Session::get('persona_id');
+	try {
+
+		$this->_db->beginTransaction();		
+		$this->_query="INSERT INTO `log_update_ticket`(`persona_id`, `micro_ticket_id`) VALUES 
+		($session, :micro_ticket_id)";		
+		$this->_db->prepare($this->_query)->execute($log_update_ticket);
+
+		
+			$this->_db->commit();		
+	} catch (Exception $e) {
+			$this->_db->rollBack();
+			echo "Error :: ".$e->getMessage();
+			exit();
+		}		
+
+}			
 
 		function getFuncionarios(){
 
@@ -342,9 +399,9 @@ function soporte($persona, $soporte, $soporte_persona, $soporte_analista, $sopor
 			return $this->Read();
 		}
 		
-		function deleterequerimientos($id){
+		function deletesoporte($id){
 
-			$this->_query= "DELETE FROM requerimiento where id = $id";
+			$this->_query= "DELETE FROM soporte where id = $id";
 
 			try {
 				$this->_db->beginTransaction();
@@ -364,7 +421,7 @@ function soporte($persona, $soporte, $soporte_persona, $soporte_analista, $sopor
 			$this->_query= "SELECT CONCAT( REPEAT( '0', 4 - LENGTH(m.id) ) , m.id) as id, m_a.persona_id, fecha_micro, fecha_entrega, p_s.cedula, CONCAT(p_a.nombre_1, ' ', p_a.apellido_1) AS analista, CONCAT(p_t.nombre_1, ' ', p_t.apellido_1) as tecnico, CONCAT(p_s.nombre_1, ' ', p_s.apellido_1) as solicitante, descripcion_depen, ref_status_equipos.referencia as status_equipo FROM micro_tickets as m
 							inner join referencia as ref_status_equipos on ref_status_equipos.id = status_equipo_id
 							
-							inner join micro_analista as m_a on m_a.micro_tickets_id = m.id
+							inner join log_insert_ticket as m_a on m_a.micro_tickets_id = m.id
                             inner join usuario as us_a on us_a.id = m_a.persona_id
 							inner join persona as p_a on p_a.id = us_a.persona_id                            
                            
@@ -388,7 +445,7 @@ function soporte($persona, $soporte, $soporte_persona, $soporte_analista, $sopor
 
 							inner join referencia as ref_status_equipos on ref_status_equipos.id = status_equipo_id
                             
-							inner join micro_analista as m_a on m_a.micro_tickets_id = m.id
+							inner join log_insert_ticket as m_a on m_a.micro_tickets_id = m.id
                             inner join usuario as us_a on us_a.id = m_a.persona_id
 							inner join persona as p_a on p_a.id = us_a.persona_id                           
                            
@@ -470,7 +527,7 @@ function soporte($persona, $soporte, $soporte_persona, $soporte_analista, $sopor
 		inner join referencia as ref_cod_area on ref_cod_area.id = cod_area_id
 		inner join referencia as ref_status on ref_status.id = status_del_caso_id
 
-		inner join soporte_analista as s_a on s_a.soporte_id = sp.id
+		inner join log_insert_soporte as s_a on s_a.soporte_id = sp.id
         inner join usuario as us_a on us_a.id = s_a.persona_a_id
 		inner join persona as p_a on p_a.id = us_a.persona_id
 
@@ -495,7 +552,7 @@ function soporte($persona, $soporte, $soporte_persona, $soporte_analista, $sopor
 		inner join referencia as ref_cod_area on ref_cod_area.id = cod_area_id
 		inner join referencia as ref_status on ref_status.id = status_del_caso_id
 
-		inner join soporte_analista as s_a on s_a.soporte_id = sp.id
+		inner join log_insert_soporte as s_a on s_a.soporte_id = sp.id
         inner join usuario as us_a on us_a.id = s_a.persona_a_id
 		inner join persona as p_a on p_a.id = us_a.persona_id
 
@@ -559,7 +616,7 @@ function soporte($persona, $soporte, $soporte_persona, $soporte_analista, $sopor
 		left join persona as p_s on p_s.id = s_p.persona_id
         inner join referencia as ref_jerarquia on ref_jerarquia.id = jerarquia_id  
 
-		inner join soporte_analista as s_a on s_a.soporte_id = sp.id
+		inner join log_insert_soporte as s_a on s_a.soporte_id = sp.id
 		inner join persona as p_a on p_a.id = s_a.persona_a_id
 
 		left join soporte_tecnico as s_t on s_t.soporte_id = sp.id
@@ -571,42 +628,7 @@ function soporte($persona, $soporte, $soporte_persona, $soporte_analista, $sopor
 			return $this->Read();
 		}			
 
-		// function reporte($id){
-
-
-		// $this->_query="SELECT CONCAT( REPEAT( '0', 4 - LENGTH(m.id) ) , m.id) as id, m_a.persona_id, CONCAT(p_a.nombre_1, ' ', p_a.apellido_1) AS analista,  p_t.credencial, CONCAT(p_t.nombre_1, ' ', p_t.apellido_1) as tecnico, p_s.cedula, p_s.credencial, p_s.cargo, CONCAT(p_s.nombre_1, ' ', p_s.apellido_1) as solicitante, d_s.descripcion_depen, ref_cod_area.referencia as cod_area, numero_micro, ref_tipo_equipo.referencia as tipo_de_equipo, marca_del_equipo, modelo_del_equipo, serial_del_equipo, ref_pieza_suelta.referencia as pieza_s, ref_pieza_danada.referencia as pieza_d, ref_rayado.referencia as rayado, ref_marca_procesador.referencia as marca_p, ref_tipo_de_ram.referencia as tipo_de_ram, ref_capacidad_ram.referencia as capacidad_r, ref_tipo_disco_duro.referencia as tipo_dd, ref_capacidad_disco_duro.referencia as capacidad_dd, fecha_micro, fecha_entrega, descripcion, solucion, p_s.correo,  ref_jerarquia.referencia as 'jerarquia', cantidad_memoria_ram, cantidad_disco_duro, fan_cooler, floppy, unidad_dvd_cd, tarjeta_red, tarjeta_video, tarjeta_sonido
- 			
-  //           FROM micro_tickets as m
- 
-		// 	inner join referencia as ref_cod_area             on ref_cod_area.id                  = cod_area_id
-		// 	inner join referencia as ref_tipo_equipo          on ref_tipo_equipo.id               = tipo_equipo_id
-		// 	inner join referencia as ref_pieza_suelta         on ref_pieza_suelta.id              = pieza_suelta_id
-		// 	inner join referencia as ref_pieza_danada         on ref_pieza_danada.id              = pieza_danada_id
-		// 	inner join referencia as ref_rayado               on ref_rayado.id                    = rayado_id
-
-		// 	left join referencia as ref_marca_procesador      on ref_marca_procesador.id          = marca_procesador_id
-		// 	left join referencia as ref_tipo_de_ram           on ref_tipo_de_ram.id               = tipo_de_ram_id
-		// 	left join referencia as ref_capacidad_ram         on ref_capacidad_ram.id             = capacidad_ram_id
-		// 	left join referencia as ref_tipo_disco_duro       on ref_tipo_disco_duro.id           = tipo_disco_duro_id
-		// 	left join referencia as ref_capacidad_disco_duro  on ref_capacidad_disco_duro.id      = capacidad_disco_duro_id
-		// 	inner join dependencias as d_s on d_s.id = m.areac_id
-            
-
-		// 	inner join micro_persona as m_p on m_p.micro_tickets_idmt = m.id
-		// 	inner join persona as p_s on p_s.id = m_p.persona_id
-		// 	inner join referencia as ref_jerarquia on ref_jerarquia.id = jerarquia_id            
-			
-
-		// 	inner join micro_analista as m_a on m_a.micro_tickets_id = m.id
-		// 	inner join persona as p_a on p_a.id = m_a.persona_id 
-
-            
-  //           inner join micro_tecnico as m_t on m_t.micro_tickets_idmt = m.id
-		// 	left join persona as p_t on p_t.id = m_t.persona_t_id
-
-		// 	where m.id = $id";			
-		// 	return $this->Read();
-		// }		
+	
 
 
 		function reporte($id){
@@ -706,7 +728,7 @@ function soporte($persona, $soporte, $soporte_persona, $soporte_analista, $sopor
 			inner join referencia as ref_jerarquia on ref_jerarquia.id = jerarquia_id            
 			
 
-			inner join micro_analista as m_a on m_a.micro_tickets_id = m.id
+			inner join log_insert_ticket as m_a on m_a.micro_tickets_id = m.id
 			inner join persona as p_a on p_a.id = m_a.persona_id 
 
             

@@ -11,7 +11,7 @@
 			;
 		}
 
-		function insertRequerimiento($requerimiento, $requerimiento_has_persona, $requerimiento_analista, $requerimientos_supervisor){
+		function insertRequerimiento($requerimiento, $requerimiento_has_persona, $log_insert_requerimiento, $requerimientos_supervisor){
 try {
 		$this->_db->beginTransaction();
 
@@ -27,9 +27,9 @@ try {
 		($requerimientoid, :persona)";		
 		$this->_db->prepare($this->_query)->execute($requerimiento_has_persona);		
 
-		$this->_query=" INSERT INTO `requerimiento_analista`(`usuario_id`, `requerimiento_id`) VALUES		
+		$this->_query=" INSERT INTO `log_insert_requerimiento`(`usuario_id`, `requerimiento_id`) VALUES		
 		($session, $requerimientoid)";		
-		$this->_db->prepare($this->_query)->execute($requerimiento_analista);
+		$this->_db->prepare($this->_query)->execute($log_insert_requerimiento);
 
 		$this->_query=" INSERT INTO `requerimientos_supervisor`(`requerimiento_id`) VALUES		
 		($requerimientoid)";		
@@ -44,7 +44,7 @@ try {
 		}
 
 		
-		function insertRequerimiento_js($requerimiento, $requerimientos_supervisor, $requerimiento_has_persona, $requerimiento_analista){
+		function insertRequerimiento_js($requerimiento, $requerimientos_supervisor, $requerimiento_has_persona, $log_insert_requerimiento){
 
 try {
 
@@ -68,9 +68,9 @@ try {
 		($requerimientoid, :persona)";		
 		$this->_db->prepare($this->_query)->execute($requerimiento_has_persona);
 
-		$this->_query=" INSERT INTO `requerimiento_analista`(requerimiento_id, usuario_id) VALUES		
+		$this->_query=" INSERT INTO `log_insert_requerimiento`(requerimiento_id, usuario_id) VALUES		
 		($requerimientoid , $session)";		
-		$this->_db->prepare($this->_query)->execute($requerimiento_analista);
+		$this->_db->prepare($this->_query)->execute($log_insert_requerimiento);
 
 
 
@@ -82,7 +82,7 @@ try {
 }
 		}			
 
-		function insert($persona, $requerimiento, $requerimientos_supervisor, $requerimiento_has_persona, $requerimiento_analista){
+		function insert($persona, $requerimiento, $requerimientos_supervisor, $requerimiento_has_persona, $log_insert_requerimiento){
 
 		$session=Session::get('persona_id');
 
@@ -114,7 +114,7 @@ try {
 		$this->_db->prepare($this->_query)->execute();
 
 
-		$this->_query=" INSERT INTO `requerimiento_analista`(`usuario_id`, `requerimiento_id`) VALUES		
+		$this->_query=" INSERT INTO `log_insert_requerimiento`(`usuario_id`, `requerimiento_id`) VALUES		
 		($session, $requerimientoid)";		
 		$this->_db->prepare($this->_query)->execute();		
 
@@ -129,7 +129,7 @@ try {
 
 	}		
 
-		function insert_js($persona, $requerimiento, $requerimientos_supervisor, $requerimiento_has_persona, $requerimiento_analista){
+		function insert_js($persona, $requerimiento, $requerimientos_supervisor, $requerimiento_has_persona, $log_insert_requerimiento){
 
 		$session=Session::get('persona_id');
 
@@ -153,7 +153,7 @@ try {
 		($personaid, $requerimientoid)";		
 		$this->_db->prepare($this->_query)->execute();
 
-		$this->_query=" INSERT INTO `requerimiento_analista`(`usuario_id`, `requerimiento_id`) VALUES		
+		$this->_query=" INSERT INTO `log_insert_requerimiento`(`usuario_id`, `requerimiento_id`) VALUES		
 		($session, $requerimientoid)";		
 		$this->_db->prepare($this->_query)->execute();
 
@@ -170,7 +170,26 @@ try {
 		exit();
 }		
 
-	}	
+	}
+
+function insert_log_update_requerimiento($log_update_requerimiento){
+	$session=Session::get('persona_id');
+	try {
+
+		$this->_db->beginTransaction();		
+		$this->_query="INSERT INTO `log_update_requerimiento`(`persona_id`, `requerimiento_id`, `numero` ) VALUES 
+		($session, :requerimiento_id, :numero)";		
+		$this->_db->prepare($this->_query)->execute($log_update_requerimiento);
+
+		
+			$this->_db->commit();		
+	} catch (Exception $e) {
+			$this->_db->rollBack();
+			echo "Error :: ".$e->getMessage();
+			exit();
+		}		
+
+}		
 	
 
 		function listarrequerimientos(){
@@ -190,7 +209,7 @@ try {
                 left join usuario as us_s on us_s.id = r_s.persona_s_id
                 LEFT JOIN persona as p_su on p_su.id = us_s.persona_id
                 
-				inner join requerimiento_analista as r_a on r_a.requerimiento_id = r.id
+				inner join log_insert_requerimiento as r_a on r_a.requerimiento_id = r.id
                 inner join usuario as us on us.id = r_a.usuario_id
                 inner join persona as p_a on p_a.id = us.persona_id
 
@@ -214,7 +233,7 @@ try {
                 left join usuario as us_s on us_s.id = r_s.persona_s_id
                 LEFT JOIN persona as p_su on p_su.id = us_s.persona_id
 
-				inner join requerimiento_analista as r_a on r_a.requerimiento_id = r.id
+				inner join log_insert_requerimiento as r_a on r_a.requerimiento_id = r.id
                 inner join usuario as us on us.id = r_a.usuario_id
                 inner join persona as p_a on p_a.id = us.persona_id
 				
@@ -328,7 +347,7 @@ try {
                 inner join usuario as us_s on us_s.id = r_s.persona_s_id
                 LEFT JOIN persona as p_su on p_su.id = us_s.persona_id
 
-			inner join requerimiento_analista as r_a on r_a.requerimiento_id = r.id
+			inner join log_insert_requerimiento as r_a on r_a.requerimiento_id = r.id
             inner join usuario as us on us.id = r_a.usuario_id
             inner join persona as p_a on p_a.id = us.persona_id
 			where r.id = $id";

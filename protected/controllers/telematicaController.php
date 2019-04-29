@@ -71,13 +71,13 @@
 				
 				$micro_persona = array(
 			);
-				$micro_analista = array(
+				$log_insert_ticket = array(
 			);
 
 				$micro_tecnico = array(
 			);
 
-			$this->_ticket->insert($persona, $micro_tickets, $micro_persona, $micro_analista, $micro_tecnico);
+			$this->_ticket->insert($persona, $micro_tickets, $micro_persona, $log_insert_ticket, $micro_tecnico);
 			$this->_view->redirect('requerimientos/rtelecargados');
 			}else{
 				$this->_view->render('newticket', 'telematica', '',$this->_sidebar_menu);
@@ -133,10 +133,10 @@
 				$micro_persona = array(
 			);
 
-				$micro_analista = array(
+				$log_insert_ticket = array(
 			);		
 
-			$this->_ticket->nuevo_ticket_jn($persona, $micro_tickets, $micro_tecnico, $micro_persona, $micro_analista);
+			$this->_ticket->nuevo_ticket_jn($persona, $micro_tickets, $micro_tecnico, $micro_persona, $log_insert_ticket);
 			$this->_view->redirect('telematica/rtelecargados');
 		}else{
 			
@@ -184,13 +184,13 @@
 				':persona' => $_POST['persona']
 			);
 
-				$micro_analista = array(
+				$log_insert_ticket = array(
 			);				
 
 				$micro_tecnico = array(
 			);
 
-			$this->_ticket->insertticket($micro_tickets, $micro_persona, $micro_analista, $micro_tecnico);
+			$this->_ticket->insertticket($micro_tickets, $micro_persona, $log_insert_ticket, $micro_tecnico);
 			$this->_view->redirect('telematica/rtelecargados');
 			
 			}else{
@@ -243,10 +243,10 @@
 				':persona' => $_POST['persona']
 			);
 
-				$micro_analista = array(
+				$log_insert_ticket = array(
 			);
 
-			$this->_ticket->insertticket_jn($micro_tickets, $micro_persona, $micro_analista, $micro_tecnico);
+			$this->_ticket->insertticket_jn($micro_tickets, $micro_persona, $log_insert_ticket, $micro_tecnico);
 			$this->_view->redirect('telematica/rtelecargados');
 			
 			}else{
@@ -274,13 +274,19 @@
 
 		}
 
-
 		function rgmicro(){
 		Session::accessRole(array('Super Usuario Telematica','Usuario Telematica'));
 			$lista = $this->_ticket->rtmicro();
 			$this->_view->_lista = $lista;
 			$this->_view->render('rgmicro','telematica','',$this->_sidebar_menu);
 		}
+
+		function deletesoporte($id){
+		Session::accessRole(array('Super Usuario Telematica','Usuario Telematica'));
+			$this->_ticket->deletesoporte($id);
+			$this->_ticket->control_delete_soporte($control_delete_soporte);
+			$this->_view->redirect('telematica/reqsoportegenerales');
+		}	
 
 		function delete($id){
 		Session::accessRole(array('Super Usuario Telematica','Usuario Telematica'));
@@ -300,7 +306,6 @@
 			if ($_SERVER['REQUEST_METHOD']=='POST') {
 
 				$micro_tickets = array(
-
 				':id'   => $_POST['id'],
 				'cod_area' => $_POST['cod_area'],
 				'numero_micro' => $_POST['numero_micro'],
@@ -331,7 +336,16 @@
 				'fecha_entrega' => $_POST['fecha_entrega']
 			);
 				$this->_ticket->upmicro_t($micro_tickets);
-				$this->_view->redirect('telematica/rgmicro');
+
+				if ($_SERVER['REQUEST_METHOD']=='POST') {
+
+					$log_update_ticket = array(
+						'micro_ticket_id'=> $_POST['micro_ticket_id']
+					);
+					$this->_ticket->insert_log_update_ticket($log_update_ticket);
+					$this->_view->redirect('telematica/rgmicro');
+				}
+				
 			}else{
 			$micro_tickets = $this->_ticket->vrmicro($id);
 			$this->_view->_micro = $micro_tickets;
@@ -390,14 +404,14 @@
 				':persona' => $_POST['persona']
 			);
 
-				$soporte_analista = array(
+				$log_insert_soporte = array(
 			);				
 
 				$soporte_tecnico = array(
 				':persona_sp' => $_POST['persona_sp']					
 			);
 
-			$this->_ticket->insertrs_js($soporte, $soporte_persona, $soporte_analista, $soporte_tecnico);
+			$this->_ticket->insertrs_js($soporte, $soporte_persona, $log_insert_soporte, $soporte_tecnico);
 			$this->_view->redirect('telematica/reqsoportegenerales');
 			
 			}else{			
@@ -426,14 +440,14 @@
 				':persona' => $_POST['persona']
 			);
 
-				$soporte_analista = array(
+				$log_insert_soporte = array(
 			);				
 
 				$soporte_tecnico = array(
 				
 			);
 
-			$this->_ticket->nuevorsoport($soporte, $soporte_persona, $soporte_analista, $soporte_tecnico);
+			$this->_ticket->nuevorsoport($soporte, $soporte_persona, $log_insert_soporte, $soporte_tecnico);
 			$this->_view->redirect('telematica/reqsoportegenerales');
 			
 			}else{			
@@ -473,14 +487,14 @@
 
 			);
 
-				$soporte_analista = array(
+				$log_insert_soporte = array(
 			);				
 
 				$soporte_tecnico = array(
 				':persona_sp' => $_POST['persona_sp']					
 			);
 
-			$this->_ticket->soporte_js($persona, $soporte, $soporte_persona, $soporte_analista, $soporte_tecnico);
+			$this->_ticket->soporte_js($persona, $soporte, $soporte_persona, $log_insert_soporte, $soporte_tecnico);
 			$this->_view->redirect('telematica/reqsoportegenerales');
 			
 			}else{			
@@ -520,14 +534,14 @@
 
 			);
 
-				$soporte_analista = array(
+				$log_insert_soporte = array(
 			);				
 
 				$soporte_tecnico = array(
 				
 			);
 
-			$this->_ticket->soporte($persona, $soporte, $soporte_persona, $soporte_analista, $soporte_tecnico);
+			$this->_ticket->soporte($persona, $soporte, $soporte_persona, $log_insert_soporte, $soporte_tecnico);
 			$this->_view->redirect('telematica/reqsoportegenerales');
 			
 			}else{			
@@ -558,7 +572,16 @@
 				
 			);
 			$this->_ticket->upsoporte($oporte);
-			$this->_view->redirect('telematica/mis_req_aserv');
+
+				if ($_SERVER['REQUEST_METHOD']=='POST') {
+
+				$log_update_soporte = array(			
+				'soporte_id'=> $_POST['soporte_id']
+				);
+				$this->_ticket->insert_log_update_soporte($log_update_soporte);
+				$this->_view->redirect('telematica/mis_req_aserv');
+				}
+			
 			}else{
 				
 			$micro_tickets = $this->_ticket->soportview($id);

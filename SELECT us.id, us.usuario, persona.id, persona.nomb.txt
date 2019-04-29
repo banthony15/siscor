@@ -1,0 +1,12 @@
+SELECT us.id, us.usuario, persona.id, persona.nombre_1 from (select id, nombre_1 from persona) as persona
+inner join usuario as us on us.persona_id = persona.id
+
+DELIMETER//
+CREATE TRIGGER delSoporte AFTER Delete on soporte
+ FOR EACH ROW
+ BEGIN
+ 	INSERT INTO `log_delete_soporte`(`soporte_id`) VALUES (OLD.id);
+
+ END
+ //
+ DELIMETER;

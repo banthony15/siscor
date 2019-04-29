@@ -50,11 +50,11 @@
 				$requerimiento_has_persona = array(
 				':persona' => $_POST['persona']
 			);
-				$requerimiento_analista = array(
+				$log_insert_requerimiento = array(
 			);
 				$requerimientos_supervisor = array(
 			);
-			$this->_reque->insertRequerimiento($requerimiento, $requerimiento_has_persona, $requerimiento_analista, $requerimientos_supervisor);
+			$this->_reque->insertRequerimiento($requerimiento, $requerimiento_has_persona, $log_insert_requerimiento, $requerimientos_supervisor);
 			$this->_view->redirect('requerimientos/totalrequerimiento');			
 			}else{
 				$persona = $this->_reque->REGperson($id);
@@ -87,11 +87,11 @@
 				$requerimiento_has_persona = array(
 				':persona' => $_POST['persona']
 			);
-				$requerimiento_analista = array(
+				$log_insert_requerimiento = array(
 				
 			);
 
-			$this->_reque->insertRequerimiento_js($requerimiento, $requerimientos_supervisor, $requerimiento_has_persona, $requerimiento_analista);
+			$this->_reque->insertRequerimiento_js($requerimiento, $requerimientos_supervisor, $requerimiento_has_persona, $log_insert_requerimiento);
 			$this->_view->redirect('requerimientos/totalrequerimiento');			
 			}else{
 				$persona = $this->_reque->REGperson($id);
@@ -136,12 +136,12 @@
 				$requerimiento_has_persona = array(
 
 			);
-				$requerimiento_analista = array(
+				$log_insert_requerimiento = array(
 					
 			);
 				// var_dump($requerimiento_has_persona);
 				// die();
-			$this->_reque->insert($persona, $requerimiento, $requerimientos_supervisor, $requerimiento_has_persona,$requerimiento_analista);
+			$this->_reque->insert($persona, $requerimiento, $requerimientos_supervisor, $requerimiento_has_persona,$log_insert_requerimiento);
 			$this->_view->redirect('requerimientos/totalrequerimiento');			
 			}else{
 				$this->_view->render('nuevorequerimientos', 'requerimientos', '',$this->_sidebar_menu);
@@ -183,9 +183,9 @@
 				$requerimiento_has_persona = array(
 
 			);
-				$requerimiento_analista = array(
+				$log_insert_requerimiento = array(
 			);
-			$this->_reque->insert_js($persona, $requerimiento, $requerimientos_supervisor, $requerimiento_has_persona, $requerimiento_analista);
+			$this->_reque->insert_js($persona, $requerimiento, $requerimientos_supervisor, $requerimiento_has_persona, $log_insert_requerimiento);
 			$this->_view->redirect('requerimientos/totalrequerimiento');			
 			}else{
 				$this->_view->render('nuevos_requerimientos_js', 'requerimientos', '',$this->_sidebar_menu);
@@ -250,7 +250,18 @@
 			$this->_reque->updateRequerimiento($requerimiento);
 
 			//this->_view->redirect('requerimientos/updateRequerimiento/'.$requerimiento[':id']);
-			$this->_view->redirect('requerimientos/readrequerimiento');
+			//$this->_view->redirect('requerimientos/readrequerimiento');
+				if ($_SERVER['REQUEST_METHOD']=='POST') {
+
+					$log_update_requerimiento = array(			
+					'requerimiento_id'=> $_POST['requerimiento_id'],
+					'numero'=> $_POST['numero']
+					);
+					$this->_reque->insert_log_update_requerimiento($log_update_requerimiento);
+					$this->_view->redirect('requerimientos/readrequerimiento');
+					}
+				
+				
 
 
 			}else{
